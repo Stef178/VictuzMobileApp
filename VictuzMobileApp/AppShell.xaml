@@ -7,7 +7,7 @@
     <!-- Navigatie-Iconbar -->
     <TabBar>
         <Tab Title="Discover" Icon="explore.png">
-            <ShellContent ContentTemplate="{DataTemplate local:WalletPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:DiscoverPage}" />
         </Tab>
         <Tab Title="Search" Icon="search.png">
             <ShellContent ContentTemplate="{DataTemplate local:SearchPage}" />

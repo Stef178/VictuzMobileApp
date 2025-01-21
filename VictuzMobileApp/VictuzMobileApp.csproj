@@ -43,10 +43,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\gatesofvictuzlogo.png" ForegroundFile="Resources\AppIcon\GatesOfVictuzLogo.png" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\gatesofvictuzsplash.png" Basesize="700,1400" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="720,1400" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
