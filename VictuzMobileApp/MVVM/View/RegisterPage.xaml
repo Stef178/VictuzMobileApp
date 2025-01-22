@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VictuzMobileApp.MVVM.View.RegisterPage"
-             Title="RegisterPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Account aanmaken">
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+        <!-- Username -->
+        <Entry Placeholder="Gebruikersnaam" />
+
+        <!-- Email -->
+        <Entry Placeholder="Email" Keyboard="Email" />
+
+        <!-- Password -->
+        <Entry Placeholder="Wachtwoord" IsPassword="True" />
+
+        <!-- Register Button -->
+        <Button Text="Aanmaken" 
+                Clicked="OnRegisterButtonClicked" 
+                HorizontalOptions="Fill" />
     </VerticalStackLayout>
 </ContentPage>

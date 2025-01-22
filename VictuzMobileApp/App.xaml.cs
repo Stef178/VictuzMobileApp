@@ -10,6 +10,7 @@ public partial class App : Application
         InitializeComponent();
 
         // NavigationPage instellen
-        MainPage = new NavigationPage(new VictuzMobileApp.MVVM.View.HomePage());
+        MainPage = new NavigationPage(new StartPage());
+        //MainPage = new NavigationPage(new VictuzMobileApp.MVVM.View.HomePage());
     }
 }
