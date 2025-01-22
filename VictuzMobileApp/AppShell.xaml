@@ -4,23 +4,8 @@
        Title="VictuzMobileApp"
        x:Class="VictuzMobileApp.AppShell">
 
-    <!-- Navigatie-Iconbar -->
-    <TabBar>
-        <Tab Title="Discover" Icon="explore.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DiscoverPage}" />
-        </Tab>
-        <Tab Title="Search" Icon="search.png">
-            <ShellContent ContentTemplate="{DataTemplate local:SearchPage}" />
-        </Tab>
-        <Tab Title="Community" Icon="groups.png">
-            <ShellContent ContentTemplate="{DataTemplate local:CommunityPage}" />
-        </Tab>
-        <Tab Title="Wallet" Icon="wallet.png">
-            <ShellContent ContentTemplate="{DataTemplate local:WalletPage}" />
-        </Tab>
-        <Tab Title="Settings" Icon="settings.png">
-            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
-        </Tab>
-    </TabBar>
-
+    <ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate local:MainPage}"
+    Route="MainPage" />
 </Shell>
