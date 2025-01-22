@@ -1,15 +1,15 @@
-﻿namespace VictuzMobileApp
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
+﻿using Microsoft.Maui.Controls;
+using VictuzMobileApp.MVVM.View;
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+namespace VictuzMobileApp;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        // NavigationPage instellen
+        MainPage = new NavigationPage(new VictuzMobileApp.MVVM.View.HomePage());
     }
 }

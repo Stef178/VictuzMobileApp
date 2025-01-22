@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictuzMobileApp.Controls.IconBar">
+    <!-- Iconbar -->
+    <Grid Grid.Row="1" BackgroundColor="DarkCyan" HorizontalOptions="FillAndExpand">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Iconen voor navigatie -->
+        <ImageButton Grid.Column="0" Source="explore.png" 
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="DiscoverPage" />
+        <ImageButton Grid.Column="1" Source="search.png" 
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="SearchPage" />
+        <ImageButton Grid.Column="2" Source="groups.png" 
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="CommunityPage" />
+        <ImageButton Grid.Column="3" Source="wallet.png" 
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="WalletPage" />
+        <ImageButton Grid.Column="4" Source="settings.png" 
+                 Command="{Binding NavigateCommand}" 
+                 CommandParameter="SettingsPage" />
+    </Grid>
+</ContentView>
+
