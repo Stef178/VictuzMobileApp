@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              x:Class="VictuzMobileApp.MVVM.View.ProfilePage"
-             Title="ProfilePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Profiel">
+    <Grid RowDefinitions="*, Auto">
+        <!-- Scrollbare content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <!-- Gebruikersprofiel -->
+                <Grid>
+                    <Image Source="person.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" />
+                    <ImageButton Source="edit.png" HeightRequest="24" WidthRequest="24" VerticalOptions="End" HorizontalOptions="End" />
+                </Grid>
+                <Label Text="Gebruikersnaam" FontSize="18" HorizontalOptions="Center" />
+
+                <!-- Velden voor gegevens -->
+                <Entry Placeholder="Voornaam" />
+                <Entry Placeholder="Achternaam" />
+                <Entry Placeholder="Geboortedatum (DD-MM-YYYY)" Keyboard="Text" />
+                <Entry Placeholder="Stad" />
+                <Entry Placeholder="Land" />
+
+                <!-- Geslacht -->
+                <Label Text="Geslacht" FontSize="16" />
+                <HorizontalStackLayout Spacing="10">
+                    <RadioButton Content="Man" />
+                    <RadioButton Content="Vrouw" />
+                </HorizontalStackLayout>
+
+                <!-- Opslaan knop -->
+                <Button Text="Opslaan" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="8" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- IconBar -->
+        <controls:IconBar Grid.Row="1" />
+    </Grid>
 </ContentPage>

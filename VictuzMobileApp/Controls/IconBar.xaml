@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VictuzMobileApp.Controls.IconBar">
+             x:Class="VictuzMobileApp.Controls.IconBar"
+             Padding="0"
+             Margin="0">
     <!-- Iconbar -->
-    <Grid Grid.Row="1" BackgroundColor="DarkCyan" HorizontalOptions="FillAndExpand">
+    <Grid Grid.Row="1" BackgroundColor="DarkCyan" HorizontalOptions="FillAndExpand" HeightRequest="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -14,20 +16,29 @@
 
         <!-- Iconen voor navigatie -->
         <ImageButton Grid.Column="0" Source="explore.png" 
-                 Command="{Binding NavigateCommand}" 
-                 CommandParameter="DiscoverPage" />
+                     Command="{Binding NavigateCommand}" 
+                     CommandParameter="DiscoverPage"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center" />
         <ImageButton Grid.Column="1" Source="search.png" 
-                 Command="{Binding NavigateCommand}" 
-                 CommandParameter="SearchPage" />
+                     Command="{Binding NavigateCommand}" 
+                     CommandParameter="SearchPage"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center" />
         <ImageButton Grid.Column="2" Source="groups.png" 
-                 Command="{Binding NavigateCommand}" 
-                 CommandParameter="CommunityPage" />
+                     Command="{Binding NavigateCommand}" 
+                     CommandParameter="CommunityPage"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center" />
         <ImageButton Grid.Column="3" Source="wallet.png" 
-                 Command="{Binding NavigateCommand}" 
-                 CommandParameter="WalletPage" />
+                     Command="{Binding NavigateCommand}" 
+                     CommandParameter="WalletPage"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center" />
         <ImageButton Grid.Column="4" Source="settings.png" 
-                 Command="{Binding NavigateCommand}" 
-                 CommandParameter="SettingsPage" />
+                     Command="{Binding NavigateCommand}" 
+                     CommandParameter="SettingsPage"
+                     HorizontalOptions="Center" 
+                     VerticalOptions="Center" />
     </Grid>
 </ContentView>
-
