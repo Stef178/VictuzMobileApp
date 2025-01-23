@@ -20,9 +20,10 @@ namespace VictuzMobileApp.MVVM.Data
             {
                 // Tabellen maken
 
-                _database.CreateTableAsync<User>().Wait();
-
-
+                _database.CreateTableAsync<Activity>().Wait();
+                _database.CreateTableAsync<Organisor>().Wait();
+                _database.CreateTableAsync<Participant>().Wait();
+                _database.CreateTableAsync<Ticket>().Wait();
 
 
             }
@@ -34,3 +35,4 @@ namespace VictuzMobileApp.MVVM.Data
             }
         }
     }
+}
