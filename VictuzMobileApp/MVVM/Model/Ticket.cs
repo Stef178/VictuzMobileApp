@@ -8,5 +8,9 @@ namespace VictuzMobileApp.MVVM.Model
 {
     internal class Ticket
     {
+        public int Id { get; set; }
+        public Activity Activity { get; set; }
+        public Participant Participant { get; set; }
+        public decimal Price { get; set; }
     }
 }
