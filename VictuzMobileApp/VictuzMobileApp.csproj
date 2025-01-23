@@ -106,8 +106,4 @@
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="MVVM\Model\" />
-	</ItemGroup>
-
 </Project>
