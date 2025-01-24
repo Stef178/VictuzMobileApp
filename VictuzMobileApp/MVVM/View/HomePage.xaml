@@ -8,8 +8,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <!-- Header -->
             <RowDefinition Height="*" />
+            <!-- Hoofdinhoud -->
+            <RowDefinition Height="Auto" />
+            <!-- Database Browser knop -->
             <RowDefinition Height="50" />
+            <!-- IconBar -->
         </Grid.RowDefinitions>
 
         <!-- Header -->
@@ -19,8 +24,6 @@
                          Clicked="OnProfileButtonClicked"
                          HorizontalOptions="Start" />
         </StackLayout>
-
-        <Button Text="Open Database Browser" Clicked="OpenDatabaseBrowser" />
 
         <!-- Hoofdinhoud -->
         <ScrollView Grid.Row="1">
@@ -42,10 +45,18 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
-        
-        
+
+        <!-- Knop: Open Database Browser -->
+        <Button Grid.Row="2" 
+                Text="Open Database Browser" 
+                Clicked="OpenDatabaseBrowser" 
+                BackgroundColor="DarkCyan" 
+                TextColor="White" 
+                CornerRadius="8"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
 
         <!-- IconBar -->
-        <controls:IconBar Grid.Row="2" />
+        <controls:IconBar Grid.Row="3" />
     </Grid>
 </ContentPage>
