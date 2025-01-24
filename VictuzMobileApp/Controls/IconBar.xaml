@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
 
         <!-- Iconen voor navigatie -->
-        <ImageButton Grid.Column="0" Source="explore.png" 
+        <ImageButton Grid.Column="0" Source="home.png" 
                      Command="{Binding NavigateCommand}" 
-                     CommandParameter="DiscoverPage"
+                     CommandParameter="HomePage"
                      HorizontalOptions="Center" 
                      VerticalOptions="Center" />
         <ImageButton Grid.Column="1" Source="search.png" 
