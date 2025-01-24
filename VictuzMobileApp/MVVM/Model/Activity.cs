@@ -25,5 +25,8 @@ namespace VictuzMobileApp.MVVM.Model
         [Ignore]
         public ICollection<Participant>? Participants { get; set; }
 
-    }
+		[Ignore]
+		public ICollection<ParticipantActivity>? ParticipantActivities { get; set; }
+
+	}
 }

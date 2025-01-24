@@ -4,10 +4,21 @@
              x:Class="VictuzMobileApp.MVVM.View.LoginPage"
              Title="Inloggen">
     <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+        <Label Text="Victuz - Login" 
+               FontSize="24" 
+               HorizontalOptions="Center" 
+               TextColor="Black" />
 
-        <Entry Placeholder="Email" Keyboard="Email" />
+        <Label Text="Gebruikersnaam:" 
+               FontAttributes="Bold" />
+        <Entry x:Name="UsernameEntry" 
+               Placeholder="Voer je gebruikersnaam in" />
 
-        <Entry Placeholder="Wachtwoord" IsPassword="True" />
+        <Label Text="Wachtwoord:" 
+               FontAttributes="Bold" />
+        <Entry x:Name="PasswordEntry" 
+               Placeholder="Voer je wachtwoord in" 
+               IsPassword="True" />
 
         <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
             <CheckBox />
@@ -16,6 +27,9 @@
 
         <Button Text="Inloggen" 
                 Clicked="OnLoginButtonClicked" 
-                HorizontalOptions="Fill" />
+                BackgroundColor="DarkCyan" 
+                TextColor="White" 
+                CornerRadius="10" 
+                HeightRequest="50" />
     </VerticalStackLayout>
 </ContentPage>
