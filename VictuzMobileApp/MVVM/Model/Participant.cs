@@ -17,5 +17,8 @@ namespace VictuzMobileApp.MVVM.Model
         public string Email { get; set; }
         [NotNull]
         public string Password { get; set; }
-    }
+
+		[Ignore]
+		public ICollection<ParticipantActivity>? ParticipantActivities { get; set; }
+	}
 }

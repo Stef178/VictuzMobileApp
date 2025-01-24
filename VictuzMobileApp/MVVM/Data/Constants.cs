@@ -18,9 +18,10 @@ namespace VictuzMobileApp.MVVM.Data
 
             try
             {
-                // Tabellen maken
+				// Tabellen maken
 
-                _database.CreateTableAsync<Activity>().Wait();
+				_database.CreateTableAsync<ParticipantActivity>().Wait();
+				_database.CreateTableAsync<Activity>().Wait();
                 _database.CreateTableAsync<Organisor>().Wait();
                 _database.CreateTableAsync<Participant>().Wait();
                 _database.CreateTableAsync<Ticket>().Wait();
