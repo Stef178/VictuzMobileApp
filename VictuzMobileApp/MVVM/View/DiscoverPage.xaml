@@ -11,7 +11,7 @@
         </Grid.RowDefinitions>
 
         <!-- Hoofdinhoud -->
-        <StackLayout Grid.Row="0">
+        <StackLayout Grid.Row="1">
             <Label Text="Welcome to the DiscoverPage" 
                HorizontalOptions="Center" 
                VerticalOptions="Center" />

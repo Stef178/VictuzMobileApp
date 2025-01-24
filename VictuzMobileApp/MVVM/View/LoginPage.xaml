@@ -4,19 +4,16 @@
              x:Class="VictuzMobileApp.MVVM.View.LoginPage"
              Title="Inloggen">
     <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-        <!-- Email -->
+
         <Entry Placeholder="Email" Keyboard="Email" />
 
-        <!-- Password -->
         <Entry Placeholder="Wachtwoord" IsPassword="True" />
 
-        <!-- Remember Me -->
         <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
             <CheckBox />
             <Label Text="Onthoud mij" VerticalTextAlignment="Center" />
         </HorizontalStackLayout>
 
-        <!-- Login Button -->
         <Button Text="Inloggen" 
                 Clicked="OnLoginButtonClicked" 
                 HorizontalOptions="Fill" />
