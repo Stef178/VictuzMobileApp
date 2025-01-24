@@ -1,9 +1,11 @@
 namespace VictuzMobileApp.MVVM.View;
 
+
 public partial class ProfilePage : ContentPage
 {
-	public ProfilePage()
-	{
-		InitializeComponent();
-	}
+    public ProfilePage()
+    {
+        InitializeComponent();
+        BindingContext = new VictuzMobileApp.MVVM.ViewModel.ProfileViewModel();
+    }
 }
