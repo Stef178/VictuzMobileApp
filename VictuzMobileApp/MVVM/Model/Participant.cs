@@ -20,8 +20,6 @@ namespace VictuzMobileApp.MVVM.Model
 
 		[Ignore]
 		public ICollection<ParticipantActivity>? ParticipantActivities { get; set; }
-	}
-=======
         public byte[] ProfilePicture { get; set; }
         public string ProfilePicturePath { get; set; }
 
