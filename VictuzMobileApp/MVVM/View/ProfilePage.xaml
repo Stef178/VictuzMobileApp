@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              x:Class="VictuzMobileApp.MVVM.View.ProfilePage"
              Title="Profiel">
     <Grid RowDefinitions="*, Auto">
+        <!-- Scrollbare content -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout Padding="20" Spacing="10">
+                <!-- Gebruikersprofiel -->
                 <Grid>
-                    <Image Source="person.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" />
-                    <ImageButton Source="edit.png" HeightRequest="24" WidthRequest="24" VerticalOptions="End" HorizontalOptions="End" />
+                    <!-- Profielfoto met binding en TapGestureRecognizer -->
+                    <Image x:Name="ProfileImage"
+                           Source="{Binding ProfileImage}"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill">
+                        <!-- TapGestureRecognizer voor menu -->
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowPhotoMenuCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <!-- Bewerken knop met command binding -->
+                    <ImageButton Source="edit.png"
+                                 HeightRequest="24"
+                                 WidthRequest="24"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 Command="{Binding ShowPhotoMenuCommand}" />
                 </Grid>
+
                 <Label Text="Gebruikersnaam" FontSize="18" HorizontalOptions="Center" />
 
+                <!-- Velden voor gegevens -->
                 <Entry Placeholder="Voornaam" />
                 <Entry Placeholder="Achternaam" />
                 <Entry Placeholder="Geboortedatum (DD-MM-YYYY)" Keyboard="Text" />
                 <Entry Placeholder="Stad" />
                 <Entry Placeholder="Land" />
 
+                <!-- Geslacht -->
                 <Label Text="Geslacht" FontSize="16" />
                 <HorizontalStackLayout Spacing="10">
                     <RadioButton Content="Man" />
                     <RadioButton Content="Vrouw" />
                 </HorizontalStackLayout>
 
+                <!-- Opslaan knop -->
                 <Button Text="Opslaan" BackgroundColor="DarkCyan" TextColor="White" CornerRadius="8" />
             </VerticalStackLayout>
         </ScrollView>
-
-        <controls:IconBar Grid.Row="1" />
     </Grid>
 </ContentPage>
