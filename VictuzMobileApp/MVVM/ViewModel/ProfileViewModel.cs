@@ -111,19 +111,22 @@ namespace VictuzMobileApp.MVVM.ViewModel
 
         private async Task SaveProfile()
         {
-            // Update de huidige gebruiker in de database
             try
             {
                 var currentUser = App.CurrentUser;
                 if (currentUser != null)
                 {
                     currentUser.Name = $"{FirstName} {LastName}";
+                    currentUser.ProfilePicturePath = ProfileImage; // Gebruik het juiste pad
                     currentUser.BirthDate = BirthDate;
                     currentUser.City = City;
                     currentUser.Country = Country;
-                    currentUser.ProfilePicturePath = ProfileImage;
 
                     await App.Database.UpdateAsync(currentUser);
+
+                    // Notify HomePage dat de data is gewijzigd
+                    OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
+
                     await Application.Current.MainPage.DisplayAlert("Succes", "Profiel is bijgewerkt!", "OK");
                 }
             }
@@ -132,6 +135,7 @@ namespace VictuzMobileApp.MVVM.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Fout", $"Er ging iets mis: {ex.Message}", "OK");
             }
         }
+
 
         private async Task ShowPhotoMenu()
         {

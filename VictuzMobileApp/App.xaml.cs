@@ -17,6 +17,9 @@ public partial class App : Application
         InitializeComponent();
         InitializeDatabase();
 
+        // Hier stel je CurrentUser in (haal de actieve gebruiker uit de database)
+        CurrentUser = Database.GetActiveUser(); // Zorg dat je deze methode implementeert in je Constants-klasse
+
         MainPage = new NavigationPage(new StartPage());
         //MainPage = new NavigationPage(new VictuzMobileApp.MVVM.View.HomePage());
     }

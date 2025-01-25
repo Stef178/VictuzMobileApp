@@ -6,6 +6,7 @@ public partial class HomePage : ContentPage
     public HomePage()
     {
         InitializeComponent();
+        BindingContext = App.CurrentUser;
     }
 
     private async void OnProfileButtonClicked(object sender, EventArgs e)
