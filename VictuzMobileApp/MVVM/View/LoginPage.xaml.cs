@@ -26,13 +26,15 @@ public partial class LoginPage : ContentPage
 			var user = await App.Database.GetAllAsync<Participant>();
 			var matchingUser = user.FirstOrDefault(u => u.Name == username && u.Password == password);
 
-			if (matchingUser != null)
-			{
-				await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
-				await Navigation.PushAsync(new HomePage());
-			}
-			else
-			{
+            if (matchingUser != null)
+            {
+                App.CurrentUser = matchingUser;
+                await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
+                await Navigation.PushAsync(new HomePage());
+            }
+
+            else
+            {
 				await DisplayAlert("Fout", "Onjuiste gebruikersnaam of wachtwoord. Probeer het opnieuw.", "OK");
 			}
 		}

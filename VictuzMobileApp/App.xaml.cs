@@ -1,12 +1,17 @@
 ﻿using Microsoft.Maui.Controls;
 using VictuzMobileApp.MVVM.View;
 using VictuzMobileApp.MVVM.Data;
+using VictuzMobileApp.MVVM.Model;
 
 namespace VictuzMobileApp;
 
 public partial class App : Application
 {
     public static Constants Database { get; private set; }
+
+    // Statische property om de huidige gebruiker op te slaan
+    public static Participant CurrentUser { get; set; }
+
     public App()
     {
         InitializeComponent();
