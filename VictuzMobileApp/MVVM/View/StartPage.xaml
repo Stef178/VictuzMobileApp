@@ -4,18 +4,23 @@
              x:Class="VictuzMobileApp.MVVM.View.StartPage"
              Title="Victuz">
     <VerticalStackLayout Padding="20" Spacing="30" VerticalOptions="Center">
-        <!-- Logo -->
         <Image Source="gatesofvictuzlogo.png" 
                HeightRequest="150" 
                WidthRequest="150" 
                HorizontalOptions="Center" />
 
-        <!-- Buttons -->
-        <Button Text="Account maken" 
-                Clicked="OnRegisterButtonClicked" 
-                HorizontalOptions="Fill" />
-        <Button Text="Inloggen" 
-                Clicked="OnLoginButtonClicked" 
-                HorizontalOptions="Fill" />
+        <Label Text="Welkom bij Victuz" FontSize="24" HorizontalOptions="Center" />
+
+        <Button Text="Inloggen"
+                Clicked="OnLoginButtonClicked"
+                BackgroundColor="DarkCyan"
+                TextColor="White"
+                CornerRadius="8" />
+
+        <Button Text="Registreren"
+                Clicked="OnRegisterButtonClicked"
+                BackgroundColor="DarkCyan"
+                TextColor="White"
+                CornerRadius="8" />
     </VerticalStackLayout>
 </ContentPage>

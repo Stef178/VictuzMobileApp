@@ -9,10 +9,11 @@
                HorizontalOptions="Center" 
                TextColor="Black" />
 
-        <Label Text="Gebruikersnaam:" 
+        <Label Text="E-mailadres:" 
                FontAttributes="Bold" />
-        <Entry x:Name="UsernameEntry" 
-               Placeholder="Voer je gebruikersnaam in" />
+        <Entry x:Name="EmailEntry" 
+               Placeholder="Voer je e-mailadres in" 
+               Keyboard="Email" />
 
         <Label Text="Wachtwoord:" 
                FontAttributes="Bold" />

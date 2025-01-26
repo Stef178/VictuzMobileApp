@@ -60,5 +60,45 @@ namespace VictuzMobileApp.MVVM.Data
         {
             return _database.InsertAllAsync(items);
         }
+
+        public Participant GetActiveUser()
+        {
+            try
+            {
+                // Haal de actieve gebruiker op (controleer op IsActive = true)
+                return _database.Table<Participant>().Where(p => p.IsActive).FirstOrDefaultAsync().Result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving active user: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task SetActiveUser(int userId)
+        {
+            try
+            {
+                // Zet alle gebruikers op niet-actief
+                var allParticipants = await _database.Table<Participant>().ToListAsync();
+                foreach (var participant in allParticipants)
+                {
+                    participant.IsActive = false;
+                    await _database.UpdateAsync(participant);
+                }
+
+                // Zet de opgegeven gebruiker op actief
+                var activeUser = await _database.Table<Participant>().Where(p => p.Id == userId).FirstOrDefaultAsync();
+                if (activeUser != null)
+                {
+                    activeUser.IsActive = true;
+                    await _database.UpdateAsync(activeUser);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error setting active user: {ex.Message}");
+            }
+        }
     }
 }

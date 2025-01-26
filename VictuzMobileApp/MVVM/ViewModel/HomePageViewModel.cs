@@ -3,13 +3,18 @@ using Microsoft.Maui.Controls;
 
 namespace VictuzMobileApp.MVVM.ViewModel
 {
-    public class MainPageViewModel
+    public class HomePageViewModel
     {
+
+        public string ProfilePicturePath { get; set; }
+
         // Navigatie Command
         public ICommand NavigateCommand { get; }
 
-        public MainPageViewModel()
+        public HomePageViewModel()
         {
+            ProfilePicturePath = App.CurrentUser?.ProfilePicturePath ?? "default_profile.png";
+
             // Koppel het navigatiecommando
             NavigateCommand = new Command<string>(Navigate);
         }

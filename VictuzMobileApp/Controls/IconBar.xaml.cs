@@ -8,6 +8,6 @@ public partial class IconBar : ContentView
     {
         InitializeComponent();
 
-        BindingContext = new VictuzMobileApp.MVVM.ViewModel.MainPageViewModel();
+        BindingContext = new VictuzMobileApp.MVVM.ViewModel.HomePageViewModel();
     }
 }
