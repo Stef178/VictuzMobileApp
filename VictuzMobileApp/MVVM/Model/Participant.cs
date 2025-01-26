@@ -6,10 +6,13 @@ public class Participant : INotifyPropertyChanged
 {
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
+
     [NotNull]
     public string Name { get; set; }
-    [NotNull]
+
+    [NotNull, Unique]
     public string Email { get; set; }
+
     [NotNull]
     public string Password { get; set; }
 
@@ -28,6 +31,7 @@ public class Participant : INotifyPropertyChanged
     public string City { get; set; }
     public string Country { get; set; }
     public bool IsMale { get; set; }
+    public bool IsActive { get; set; }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
