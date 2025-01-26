@@ -12,11 +12,9 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
-        // Haal de ingevoerde e-mail en wachtwoord op
         string email = EmailEntry.Text?.Trim();
         string password = PasswordEntry.Text?.Trim();
 
-        // Controleer of beide velden zijn ingevuld
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
             await DisplayAlert("Fout", "Vul alstublieft zowel e-mailadres als wachtwoord in.", "OK");
@@ -25,23 +23,29 @@ public partial class LoginPage : ContentPage
 
         try
         {
+            // Controleer of het de admin-gebruiker is
+            if (email == App.AdminUser.Email && password == App.AdminUser.Password)
+            {
+                App.CurrentUser = App.AdminUser; // Zet admin als actieve gebruiker
+                await DisplayAlert("Succes", "Admin succesvol ingelogd!", "OK");
+
+                // **Navigeer naar MainPage in plaats van HomePage**
+                Application.Current.MainPage = new NavigationPage(new MainPage());
+                return;
+            }
+
             // Haal alle gebruikers op uit de database
             var users = await App.Database.GetAllAsync<Participant>();
-
-            // Zoek de gebruiker met de opgegeven e-mailadres en wachtwoord
             var matchingUser = users.FirstOrDefault(u => u.Email == email && u.Password == password);
 
             if (matchingUser != null)
             {
-                // Markeer de gebruiker als actief in de database
                 await App.Database.SetActiveUser(matchingUser.Id);
-
-                // Sla de actieve gebruiker op in de statische App-property
                 App.CurrentUser = matchingUser;
-
-                // Geef een succesmelding en navigeer naar de HomePage
                 await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
-                await Navigation.PushAsync(new HomePage());
+
+                // **Normale gebruiker wordt naar HomePage gestuurd**
+                Application.Current.MainPage = new NavigationPage(new HomePage());
             }
             else
             {
@@ -53,4 +57,5 @@ public partial class LoginPage : ContentPage
             await DisplayAlert("Fout", $"Er is iets misgegaan: {ex.Message}", "OK");
         }
     }
+
 }
