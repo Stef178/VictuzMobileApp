@@ -34,4 +34,13 @@ public partial class App : Application
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "VictuzMobile.db");
         Database = new Constants(dbPath);
     }
+
+    public static Participant AdminUser { get; } = new Participant
+    {
+        Id = -1, // Negatief ID zodat het niet conflicteert met DB
+        Name = "Admin",
+        Email = "admin@admin.com",
+        Password = "admin123",
+        IsActive = false
+    };
 }

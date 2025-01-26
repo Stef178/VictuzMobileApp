@@ -1,25 +1,32 @@
-﻿namespace VictuzMobileApp
+﻿using SQLiteBrowser;
+using System.IO;
+
+namespace VictuzMobileApp
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCreateActivityClicked(object sender, EventArgs e)
         {
-            count++;
+            await Navigation.PushAsync(new VictuzMobileApp.MVVM.View.CreateActivityPage());
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private async void OpenDatabaseBrowser(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DatabaseBrowserPage(Path.Combine(FileSystem.AppDataDirectory, "VictuzMobile.db")));
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private async void OnLogoutClicked(object sender, EventArgs e)
+        {
+            // ✅ Maak de huidige gebruiker "inactief"
+            App.CurrentUser = null;
+
+            // ✅ Keer terug naar de LoginPage
+            Application.Current.MainPage = new NavigationPage(new VictuzMobileApp.MVVM.View.StartPage());
         }
     }
-
 }

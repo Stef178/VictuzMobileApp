@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictuzMobileApp.MVVM.View.CreateActivityPage"
+             Title="Activiteit aanmaken">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Label Text="Naam activiteit:" FontAttributes="Bold" />
+        <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
+
+        <Label Text="Categorie:" FontAttributes="Bold" />
+        <Entry x:Name="CategoryEntry" Placeholder="Voer categorie in" />
+
+        <Label Text="Beschrijving:" FontAttributes="Bold" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
+
+        <Label Text="Startdatum:" FontAttributes="Bold" />
+        <DatePicker x:Name="StartDatePicker" />
+
+        <Label Text="Einddatum:" FontAttributes="Bold" />
+        <DatePicker x:Name="EndDatePicker" />
+
+        <Button Text="Aanmaken" 
+                Clicked="OnCreateActivityButtonClicked"
+                BackgroundColor="DarkCyan" 
+                TextColor="White" 
+                CornerRadius="10" 
+                HeightRequest="50" />
+
+    </VerticalStackLayout>
+</ContentPage>
