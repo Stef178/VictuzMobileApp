@@ -10,7 +10,18 @@
         <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
 
         <Label Text="Categorie:" FontAttributes="Bold" />
-        <Entry x:Name="CategoryEntry" Placeholder="Voer categorie in" />
+        <Picker x:Name="CategoryTypePicker"
+        Title="Selecteer categorie"
+        SelectedIndexChanged="OnCategoryTypeChanged">
+            <Picker.Items>
+                <x:String>Workshop</x:String>
+                <x:String>Borrelavond</x:String>
+                <x:String>Game Night</x:String>
+                <x:String>Outdooractiviteit</x:String>
+                <x:String>Weekendje/excursie</x:String>
+                <x:String>Feest en thema- avond</x:String>
+            </Picker.Items>
+        </Picker>
 
         <Label Text="Beschrijving:" FontAttributes="Bold" />
         <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
@@ -20,6 +31,10 @@
 
         <Label Text="Einddatum:" FontAttributes="Bold" />
         <DatePicker x:Name="EndDatePicker" />
+
+        <Label Text="Max aantal deelnemers:" FontAttributes="Bold" />
+        <Entry x:Name="MaxParticipantsEntry" 
+               Placeholder="Bijvoorbeeld: 50" />
 
         <Button Text="Aanmaken" 
                 Clicked="OnCreateActivityButtonClicked"

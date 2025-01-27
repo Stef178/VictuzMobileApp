@@ -1,28 +1,53 @@
-namespace VictuzMobileApp.MVVM.View;
 using SQLiteBrowser;
+using VictuzMobileApp.MVVM.Model;
+
+namespace VictuzMobileApp.MVVM.View;
+
 
 public partial class HomePage : ContentPage
 {
-    public HomePage()
+
+	public List<Activity> UpcomingEvents { get; set; }
+	public HomePage()
     {
         InitializeComponent();
-        BindingContext = new VictuzMobileApp.MVVM.ViewModel.HomePageViewModel();
+		LoadUpcomingEvents();
+		BindingContext = new VictuzMobileApp.MVVM.ViewModel.HomePageViewModel();
     }
 
-    private async void OnLogoutButtonClicked(object sender, EventArgs e)
+    private async void LoadUpcomingEvents()
     {
-        // Bevestig of de gebruiker echt wil uitloggen
+        try
+        {
+            var activities = await App.Database.GetAllAsync<Activity>();
+
+            UpcomingEvents = activities
+                .Where(a => a.StartTime >= DateTime.Now)
+                .OrderBy(a => a.StartTime)
+                .Take(3)
+                .ToList();
+
+            BindingContext = this;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading events: {ex.Message}");
+            await DisplayAlert("Error", "Er is een fout opgetreden bij het laden van de evenementen.", "OK");
+        }
+    }
+
+
+	private async void OnLogoutButtonClicked(object sender, EventArgs e)
+    {
         bool confirmLogout = await DisplayAlert("Uitloggen", "Weet u zeker dat u wilt uitloggen?", "Ja", "Nee");
         if (!confirmLogout)
             return;
 
         try
         {
-            // Reset de actieve gebruiker in de database
-            await App.Database.SetActiveUser(0); // Zet alle gebruikers op inactief
+            await App.Database.SetActiveUser(0);
             App.CurrentUser = null;
 
-            // Navigeer terug naar de StartPage
             await Navigation.PushAsync(new StartPage());
         }
         catch (Exception ex)
@@ -35,14 +60,11 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
-        // Controleer of de gebruiker een profielafbeelding heeft ingesteld
         if (App.CurrentUser != null && string.IsNullOrEmpty(App.CurrentUser.ProfilePicturePath))
         {
-            // Gebruik de standaardafbeelding
             App.CurrentUser.ProfilePicturePath = "person.png";
         }
 
-        // Stel de BindingContext in (indien niet al gedaan)
         BindingContext = App.CurrentUser;
     }
 
@@ -53,8 +75,8 @@ public partial class HomePage : ContentPage
     }
 
     private async void OnDiscoverButtonClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new DiscoverPage());
+	{
+        await Navigation.PushAsync(new VictuzMobileApp.MVVM.View.DiscoverPage());
     }
 
     private async void OpenDatabaseBrowser(object sender, EventArgs e)
