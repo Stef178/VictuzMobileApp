@@ -1,31 +1,24 @@
-using System;
-using System.Linq;
 using VictuzMobileApp.MVVM.Model;
-using VictuzMobileApp.MVVM.Data;
 
 namespace VictuzMobileApp.MVVM.View
 {
 	public partial class DiscoverPage : ContentPage
 	{
-		public List<Activity> UpcomingEvents { get; set; }
+		public List<Activity> AllEvents { get; set; }
 
 		public DiscoverPage()
 		{
-			LoadUpcomingEvents();
-			InitializeComponent(); 
+			InitializeComponent();
+			LoadAllEvents();
 		}
 
-		private async void LoadUpcomingEvents()
+		private async void LoadAllEvents()
 		{
 			try
 			{
 				var activities = await App.Database.GetAllAsync<Activity>();
 
-				UpcomingEvents = activities
-					.Where(a => a.StartTime >= DateTime.Now) 
-					.OrderBy(a => a.StartTime)           
-					.Take(3)                              
-					.ToList();
+				AllEvents = activities.OrderBy(a => a.StartTime).ToList();
 
 				BindingContext = this;
 			}

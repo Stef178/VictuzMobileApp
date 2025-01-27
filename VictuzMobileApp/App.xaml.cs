@@ -15,10 +15,8 @@ public partial class App : Application
         InitializeComponent();
         InitializeDatabase();
 
-        // Controleer of er een actieve gebruiker is
         CurrentUser = Database.GetActiveUser();
 
-        // Als er een actieve gebruiker is, ga naar HomePage, anders naar StartPage
         if (CurrentUser != null)
         {
             MainPage = new NavigationPage(new HomePage());
@@ -37,7 +35,7 @@ public partial class App : Application
 
     public static Participant AdminUser { get; } = new Participant
     {
-        Id = -1, // Negatief ID zodat het niet conflicteert met DB
+        Id = -1, 
         Name = "Admin",
         Email = "admin@admin.com",
         Password = "admin123",

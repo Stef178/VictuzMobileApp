@@ -10,8 +10,7 @@
         </Grid.RowDefinitions>
 
         <ScrollView Grid.Row="0" Padding="10">
-            <StackLayout x:Name="EventsContainer"
-                         BindableLayout.ItemsSource="{Binding UpcomingEvents}">
+            <StackLayout BindableLayout.ItemsSource="{Binding AllEvents}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="DarkCyan"
@@ -35,6 +34,5 @@
                 </BindableLayout.ItemTemplate>
             </StackLayout>
         </ScrollView>
-
     </Grid>
 </ContentPage>

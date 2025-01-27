@@ -31,6 +31,30 @@
                 <Label Text="Aankomende evenementen" 
                        FontAttributes="Bold" 
                        FontSize="16" />
+                <StackLayout Padding="10" Spacing="10"
+             BindableLayout.ItemsSource="{Binding UpcomingEvents}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="DarkCyan"
+                   CornerRadius="10"
+                   Padding="10"
+                   Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="Center" />
+                                    <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
+                           FontSize="Small"
+                           HorizontalOptions="Center" />
+                                    <Label Text="{Binding Category}"
+                           FontSize="Small"
+                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
             </VerticalStackLayout>
         </ScrollView>
 

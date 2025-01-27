@@ -1,15 +1,43 @@
-namespace VictuzMobileApp.MVVM.View;
 using SQLiteBrowser;
+using VictuzMobileApp.MVVM.Model;
+
+namespace VictuzMobileApp.MVVM.View;
+
 
 public partial class HomePage : ContentPage
 {
-    public HomePage()
+
+	public List<Activity> UpcomingEvents { get; set; }
+	public HomePage()
     {
         InitializeComponent();
-        BindingContext = new VictuzMobileApp.MVVM.ViewModel.HomePageViewModel();
+		LoadUpcomingEvents();
+		BindingContext = new VictuzMobileApp.MVVM.ViewModel.HomePageViewModel();
     }
 
-    private async void OnLogoutButtonClicked(object sender, EventArgs e)
+    private async void LoadUpcomingEvents()
+    {
+        try
+        {
+            var activities = await App.Database.GetAllAsync<Activity>();
+
+            UpcomingEvents = activities
+                .Where(a => a.StartTime >= DateTime.Now)
+                .OrderBy(a => a.StartTime)
+                .Take(3)
+                .ToList();
+
+            BindingContext = this;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading events: {ex.Message}");
+            await DisplayAlert("Error", "Er is een fout opgetreden bij het laden van de evenementen.", "OK");
+        }
+    }
+
+
+	private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         bool confirmLogout = await DisplayAlert("Uitloggen", "Weet u zeker dat u wilt uitloggen?", "Ja", "Nee");
         if (!confirmLogout)
