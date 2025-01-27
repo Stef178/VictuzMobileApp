@@ -16,9 +16,14 @@ namespace VictuzMobileApp.MVVM.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
 
+        }
+
+		public async Task InitializeDatabaseAsync()
+        { 
+
             try
             {
-				// Tabellen maken
+
 				_database.CreateTableAsync<Activity>().Wait();
                 _database.CreateTableAsync<Organisor>().Wait();
                 _database.CreateTableAsync<Participant>().Wait();

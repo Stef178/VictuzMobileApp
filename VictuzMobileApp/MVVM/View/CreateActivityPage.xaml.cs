@@ -7,10 +7,27 @@ namespace VictuzMobileApp.MVVM.View
     {
         public CreateActivityPage()
         {
-            InitializeComponent(); // Zorg ervoor dat dit correct is toegevoegd!
+            InitializeComponent(); 
         }
 
-        private async void OnCreateActivityButtonClicked(object sender, EventArgs e)
+		public string SelectedCategoryType { get; set; }
+
+
+		private void OnCategoryTypeChanged(object sender, EventArgs e)
+		{
+			if (CategoryTypePicker.SelectedItem != null)
+			{
+				SelectedCategoryType = CategoryTypePicker.SelectedItem.ToString();
+				Console.WriteLine($"Geselecteerde categorie: {SelectedCategoryType}");
+			}
+			else
+			{
+				Console.WriteLine("Geen categorie geselecteerd.");
+			}
+		}
+
+
+		private async void OnCreateActivityButtonClicked(object sender, EventArgs e)
         {
             if (App.CurrentUser == null)
             {
@@ -24,15 +41,22 @@ namespace VictuzMobileApp.MVVM.View
                 return;
             }
 
-            // Maak de activiteit aan met de juiste UI-elementen
-            var newActivity = new Activity
+			if (!int.TryParse(MaxParticipantsEntry.Text, out int maxParticipants) || maxParticipants <= 0)
+			{
+				await DisplayAlert("Fout", "Vul een geldig maximum aantal deelnemers in.", "OK");
+				return;
+			}
+
+
+			var newActivity = new Activity
             {
-                Name = NameEntry.Text,          // Moet exact overeenkomen met x:Name in XAML
-                Category = CategoryEntry.Text,
-                Description = DescriptionEntry.Text,
+                Name = NameEntry.Text,         
+                Category = SelectedCategoryType,
+				Description = DescriptionEntry.Text,
                 StartTime = StartDatePicker.Date,
-                EndTime = EndDatePicker.Date
-            };
+                EndTime = EndDatePicker.Date,
+				MaxParticipants = maxParticipants
+			};
 
             await App.Database.AddAsync(newActivity);
             await DisplayAlert("Succes", "Activiteit succesvol aangemaakt!", "OK");
