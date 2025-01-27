@@ -9,16 +9,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <!-- Header -->
             <RowDefinition Height="*" />
-            <!-- Hoofdinhoud -->
             <RowDefinition Height="Auto" />
-            <!-- Database Browser knop -->
             <RowDefinition Height="50" />
-            <!-- IconBar -->
         </Grid.RowDefinitions>
 
-        <!-- Header -->
         <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
             <ImageButton 
                 Source="{Binding ProfilePicturePath, FallbackValue='person.png'}"
@@ -27,7 +22,6 @@
                 HorizontalOptions="Start" />
         </StackLayout>
 
-        <!-- Hoofdinhoud -->
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="10" Spacing="20">
                 <Button Text="Ontdek evenementen" 
@@ -37,18 +31,9 @@
                 <Label Text="Aankomende evenementen" 
                        FontAttributes="Bold" 
                        FontSize="16" />
-                <HorizontalStackLayout Spacing="10">
-                    <Frame WidthRequest="150" HeightRequest="150" BackgroundColor="LightGray">
-                        <Label Text="Event 1" VerticalOptions="Center" HorizontalOptions="Center" />
-                    </Frame>
-                    <Frame WidthRequest="150" HeightRequest="150" BackgroundColor="LightGray">
-                        <Label Text="Event 2" VerticalOptions="Center" HorizontalOptions="Center" />
-                    </Frame>
-                </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- Uitlogknop -->
         <Button Grid.Row="1" 
                 Text="Uitloggen" 
                 Clicked="OnLogoutButtonClicked" 
@@ -58,7 +43,6 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="End" />
 
-        <!-- Knop: Open Database Browser -->
         <Button Grid.Row="2" 
                 Text="Open Database Browser" 
                 Clicked="OpenDatabaseBrowser" 
@@ -68,7 +52,6 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Center" />
 
-        <!-- IconBar -->
         <controls:IconBar Grid.Row="3" />
     </Grid>
 </ContentPage>

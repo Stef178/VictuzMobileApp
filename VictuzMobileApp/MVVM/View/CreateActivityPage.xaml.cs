@@ -41,12 +41,16 @@ namespace VictuzMobileApp.MVVM.View
                 return;
             }
 
-			if (!int.TryParse(MaxParticipantsEntry.Text, out int maxParticipants) || maxParticipants <= 0)
+			int maxParticipants;
+			bool isMaxParticipantsValid = int.TryParse(MaxParticipantsEntry.Text, out maxParticipants);
+
+			int maxLimit = 500;
+
+			if (!isMaxParticipantsValid || maxParticipants <= 0 || maxParticipants > maxLimit)
 			{
-				await DisplayAlert("Fout", "Vul een geldig maximum aantal deelnemers in.", "OK");
+				await DisplayAlert("Fout", $"Het aantal deelnemers mag niet groter zijn dan {maxLimit}.", "OK");
 				return;
 			}
-
 
 			var newActivity = new Activity
             {

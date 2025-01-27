@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              x:Class="VictuzMobileApp.MVVM.View.DiscoverPage"
              Title="DiscoverPage">
     <Grid>
@@ -10,14 +9,32 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <!-- Hoofdinhoud -->
-        <StackLayout Grid.Row="1">
-            <Label Text="Welcome to the DiscoverPage" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
-        </StackLayout>
+        <ScrollView Grid.Row="0" Padding="10">
+            <StackLayout x:Name="EventsContainer"
+                         BindableLayout.ItemsSource="{Binding UpcomingEvents}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="DarkCyan"
+                               CornerRadius="10"
+                               Padding="10"
+                               Margin="5">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
+                                       FontSize="Small"
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding Category}"
+                                       FontSize="Small"
+                                       HorizontalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
 
-        <!-- IconBar -->
-        <controls:IconBar Grid.Row="1" />
     </Grid>
 </ContentPage>
