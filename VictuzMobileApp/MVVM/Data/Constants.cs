@@ -16,11 +16,6 @@ namespace VictuzMobileApp.MVVM.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
 
-        }
-
-		public async Task InitializeDatabaseAsync()
-        { 
-
             try
             {
 
