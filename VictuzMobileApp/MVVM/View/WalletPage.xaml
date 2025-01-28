@@ -10,14 +10,12 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <!-- Hoofdinhoud -->
         <StackLayout Grid.Row="0">
             <Label Text="Welcome to the WalletPage" 
            HorizontalOptions="Center" 
            VerticalOptions="Center" />
         </StackLayout>
 
-        <!-- IconBar -->
         <controls:IconBar Grid.Row="1" />
     </Grid>
 </ContentPage>

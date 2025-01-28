@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -18,6 +18,10 @@ namespace VictuzMobileApp.MVVM.Model
         public DateTime StartTime { get; set; }
         [NotNull]
         public DateTime EndTime { get; set; }
+        [NotNull]
+		public int MaxParticipants { get; set; }
+		[Ignore]
+		public Organisor? Organisor { get; set; }
         [Ignore]
         public int MaxParticipants { get; set; }
         [Ignore]

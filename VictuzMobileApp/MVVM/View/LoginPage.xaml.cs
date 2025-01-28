@@ -23,18 +23,15 @@ public partial class LoginPage : ContentPage
 
         try
         {
-            // Controleer of het de admin-gebruiker is
             if (email == App.AdminUser.Email && password == App.AdminUser.Password)
             {
-                App.CurrentUser = App.AdminUser; // Zet admin als actieve gebruiker
+                App.CurrentUser = App.AdminUser; 
                 await DisplayAlert("Succes", "Admin succesvol ingelogd!", "OK");
 
-                // **Navigeer naar MainPage in plaats van HomePage**
                 Application.Current.MainPage = new NavigationPage(new MainPage());
                 return;
             }
 
-            // Haal alle gebruikers op uit de database
             var users = await App.Database.GetAllAsync<Participant>();
             var matchingUser = users.FirstOrDefault(u => u.Email == email && u.Password == password);
 
@@ -44,7 +41,6 @@ public partial class LoginPage : ContentPage
                 App.CurrentUser = matchingUser;
                 await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
 
-                // **Normale gebruiker wordt naar HomePage gestuurd**
                 Application.Current.MainPage = new NavigationPage(new HomePage());
             }
             else

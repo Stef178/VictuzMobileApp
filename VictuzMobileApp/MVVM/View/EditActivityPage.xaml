@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictuzMobileApp.MVVM.View.EditActivityPage"
+             Title="Bewerk Activiteit">
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+        <Label Text="Bewerk Activiteit" FontSize="24" HorizontalOptions="Center" />
+
+        <Label Text="Naam activiteit:" FontAttributes="Bold" />
+        <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
+
+        <Label Text="Categorie:" FontAttributes="Bold" />
+        <Picker x:Name="CategoryTypePicker"
+        Title="Selecteer categorie"
+        SelectedIndexChanged="OnCategoryTypeChanged">
+            <Picker.Items>
+                <x:String>Workshop</x:String>
+                <x:String>Borrelavond</x:String>
+                <x:String>Game Night</x:String>
+                <x:String>Outdooractiviteit</x:String>
+                <x:String>Weekendje/excursie</x:String>
+                <x:String>Feest en thema- avond</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label Text="Beschrijving:" FontAttributes="Bold" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
+
+        <Label Text="Startdatum en tijd"/>
+        <HorizontalStackLayout Spacing="10">
+            <DatePicker x:Name="StartDatePicker" 
+                           Format="dd/MM/yyyy"
+                           WidthRequest="200"/>
+            <TimePicker x:Name="StartTimePicker"
+                           Format="HH:mm"
+                           WidthRequest="100"/>
+        </HorizontalStackLayout>
+
+        <Label Text="Einddatum en tijd"/>
+        <HorizontalStackLayout Spacing="10">
+            <DatePicker x:Name="EndDatePicker"
+                           Format="dd/MM/yyyy"
+                           WidthRequest="200"/>
+            <TimePicker x:Name="EndTimePicker"
+                           Format="HH:mm"
+                           WidthRequest="100"/>
+        </HorizontalStackLayout>
+
+            <Label Text="Maximum aantal deelnemers"/>
+            <Entry x:Name="MaxParticipantsEntry"
+                   Placeholder="Maximum aantal deelnemers"
+                   Keyboard="Numeric"/>
+
+        <Button Text="Opslaan" Clicked="OnSaveButtonClicked" BackgroundColor="Green" TextColor="White" CornerRadius="8" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

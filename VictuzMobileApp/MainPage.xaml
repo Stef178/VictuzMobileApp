@@ -7,25 +7,39 @@
     <VerticalStackLayout Padding="20" Spacing="10">
         <Label Text="Welkom, Admin!" FontSize="24" HorizontalOptions="Center"/>
 
-        <Button Text="Activiteit aanmaken" Clicked="OnCreateActivityClicked"/>
+        <Button Text="Activiteit aanmaken" Clicked="OnCreateActivityClicked" />
 
-        <!-- Knop: Open Database Browser -->
+        <Button Text="Activiteiten bewerken/verwijderen" 
+                Clicked="OnEditOrDeleteActivityClicked" 
+                BackgroundColor="MediumSlateBlue" 
+                TextColor="White" 
+                CornerRadius="8"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
+
+        <Button Text="Deelnemers bekijken/verwijderen" 
+                Clicked="OnViewOrDeleteParticipantsClicked" 
+                BackgroundColor="DarkOrange" 
+                TextColor="White" 
+                CornerRadius="8"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
+
         <Button Text="Open Database Browser" 
-            Clicked="OpenDatabaseBrowser" 
-            BackgroundColor="DarkCyan" 
-            TextColor="White" 
-            CornerRadius="8"
-            HorizontalOptions="Fill"
-            VerticalOptions="Center" />
+                Clicked="OpenDatabaseBrowser" 
+                BackgroundColor="DarkCyan" 
+                TextColor="White" 
+                CornerRadius="8"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
 
-        <!-- Uitlogknop -->
         <Button Text="Uitloggen" 
-            Clicked="OnLogoutClicked" 
-            BackgroundColor="Red" 
-            TextColor="White" 
-            CornerRadius="8"
-            HorizontalOptions="Fill"
-            VerticalOptions="Center" />
+                Clicked="OnLogoutClicked" 
+                BackgroundColor="Red" 
+                TextColor="White" 
+                CornerRadius="8"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
     </VerticalStackLayout>
 
 </ContentPage>

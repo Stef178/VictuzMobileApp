@@ -21,11 +21,6 @@
                Placeholder="Voer je wachtwoord in" 
                IsPassword="True" />
 
-        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
-            <CheckBox />
-            <Label Text="Onthoud mij" VerticalTextAlignment="Center" />
-        </HorizontalStackLayout>
-
         <Button Text="Inloggen" 
                 Clicked="OnLoginButtonClicked" 
                 BackgroundColor="DarkCyan" 
