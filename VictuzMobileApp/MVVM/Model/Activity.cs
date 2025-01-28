@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -23,7 +23,13 @@ namespace VictuzMobileApp.MVVM.Model
 		[Ignore]
 		public Organisor? Organisor { get; set; }
         [Ignore]
+        public int MaxParticipants { get; set; }
+        [Ignore]
+        public Organisor? Organisor { get; set; }
+        [Ignore]
         public ICollection<Participant>? Participants { get; set; }
 
-	}
+        // Eigenschap voor foto
+        public string PhotoPath { get; set; }
+    }
 }

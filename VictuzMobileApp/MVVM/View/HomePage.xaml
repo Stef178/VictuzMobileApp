@@ -41,18 +41,27 @@
                                    CornerRadius="10"
                                    Padding="10"
                                    Margin="5">
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding Name}"
-                                           FontAttributes="Bold"
-                                           FontSize="Medium"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
-                                           FontSize="Small"
-                                           HorizontalOptions="Center" />
-                                    <Label Text="{Binding Category}"
-                                           FontSize="Small"
-                                           HorizontalOptions="Center" />
-                                </VerticalStackLayout>
+                                <HorizontalStackLayout Spacing="10">
+                                    <!-- Afbeelding van de activiteit -->
+                                    <Image Source="{Binding PhotoPath}" 
+                                           HeightRequest="80" 
+                                           WidthRequest="80" 
+                                           Aspect="AspectFill" />
+
+                                    <!-- Informatie over de activiteit -->
+                                    <VerticalStackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding Name}"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
+                                               FontSize="Small"
+                                               HorizontalOptions="Center" />
+                                        <Label Text="{Binding Category}"
+                                               FontSize="Small"
+                                               HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
