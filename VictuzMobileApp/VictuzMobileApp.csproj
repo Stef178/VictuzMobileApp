@@ -130,4 +130,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	  <PackageReference Include="Xamarin.AndroidX.WebKit">
+	    <Version>1.12.1.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
 </Project>

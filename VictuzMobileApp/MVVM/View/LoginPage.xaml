@@ -27,5 +27,13 @@
                 TextColor="White" 
                 CornerRadius="10" 
                 HeightRequest="50" />
+
+        <WebView 
+                x:Name="CaptchaWebView"
+                HeightRequest="100"
+                WidthRequest="300"
+                Navigated="CaptchaWebView_Navigated"/>
+                <Button Text="Verifieer CAPTCHA" Clicked="OnCaptchaSubmit"/>
+        
     </VerticalStackLayout>
 </ContentPage>
