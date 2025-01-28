@@ -52,19 +52,28 @@ namespace VictuzMobileApp.MVVM.View
 				return;
 			}
 
+			DateTime startDateTime = StartDatePicker.Date.Add(StartTimePicker.Time);
+			DateTime endDateTime = EndDatePicker.Date.Add(EndTimePicker.Time);
+
+			if (endDateTime <= startDateTime)
+			{
+				await DisplayAlert("Fout", "De einddatum moet na de startdatum liggen.", "OK");
+				return;
+			}
+
 			var newActivity = new Activity
-            {
-                Name = NameEntry.Text,         
-                Category = SelectedCategoryType,
+			{
+				Name = NameEntry.Text,
+				Category = SelectedCategoryType,
 				Description = DescriptionEntry.Text,
-                StartTime = StartDatePicker.Date,
-                EndTime = EndDatePicker.Date,
+				StartTime = startDateTime,
+				EndTime = endDateTime,
 				MaxParticipants = maxParticipants
 			};
 
-            await App.Database.AddAsync(newActivity);
-            await DisplayAlert("Succes", "Activiteit succesvol aangemaakt!", "OK");
-            await Navigation.PopAsync();
-        }
-    }
+			await App.Database.AddAsync(newActivity);
+			await DisplayAlert("Succes", "Activiteit succesvol aangemaakt!", "OK");
+			await Navigation.PopAsync();
+		}
+	}
 }

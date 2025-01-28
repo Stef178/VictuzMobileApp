@@ -20,22 +20,19 @@ public partial class HomePage : ContentPage
 		{
 			UpcomingEvents.Clear();
 
-			// Haal alle activiteiten op
 			var activities = (await App.Database.GetAllAsync<Activity>()).ToList();
 
-			// Filter op huidige datum en tijd, sorteer op startdatum/tijd, en pak de eerste 3
 			var upcomingActivities = activities
-				.Where(a => a.StartTime.Date >= DateTime.Now.Date) // Vergelijk alleen de datums
-				.OrderBy(a => a.StartTime.Date)  // Sorteer eerst op datum
-				.ThenBy(a => a.StartTime.TimeOfDay)  // Dan op tijd binnen dezelfde datum
-				.Take(3)  // Pak de eerste 3
+				.Where(a => a.StartTime.Date >= DateTime.Now.Date) 
+				.OrderBy(a => a.StartTime.Date) 
+				.ThenBy(a => a.StartTime.TimeOfDay)  
+				.Take(3)  
 				.ToList();
 
-			// Voeg ze toe aan de ObservableCollection
 			foreach (var activity in upcomingActivities)
 			{
 				UpcomingEvents.Add(activity);
-				// Debug logging
+
 				Console.WriteLine($"Added activity: {activity.Name} on {activity.StartTime}");
 			}
 
@@ -48,7 +45,6 @@ public partial class HomePage : ContentPage
 		}
 	}
 
-	// Rest van de code blijft hetzelfde...
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
