@@ -5,7 +5,6 @@
              xmlns:local="clr-namespace:VictuzMobileApp"
              x:Class="VictuzMobileApp.MVVM.View.HomePage"
              Title="HomePage">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,8 +15,9 @@
 
         <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
             <ImageButton 
-                Source="{Binding ProfilePicturePath, FallbackValue='person.png'}"
-                HeightRequest="40" WidthRequest="40"
+                Source="{Binding App.CurrentUser.ProfilePicturePath, FallbackValue='person.png'}"
+                HeightRequest="40" 
+                WidthRequest="40"
                 Clicked="OnProfileButtonClicked"
                 HorizontalOptions="Start" />
         </StackLayout>
@@ -31,30 +31,31 @@
                 <Label Text="Aankomende evenementen" 
                        FontAttributes="Bold" 
                        FontSize="16" />
-                <StackLayout Padding="10" Spacing="10"
-             BindableLayout.ItemsSource="{Binding UpcomingEvents}">
-                    <BindableLayout.ItemTemplate>
+
+                <CollectionView ItemsSource="{Binding UpcomingEvents}"
+                              EmptyView="Geen aankomende evenementen gevonden">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BorderColor="DarkCyan"
-                   CornerRadius="10"
-                   Padding="10"
-                   Margin="5">
-                                <StackLayout>
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5">
+                                <VerticalStackLayout>
                                     <Label Text="{Binding Name}"
-                           FontAttributes="Bold"
-                           FontSize="Medium"
-                           HorizontalOptions="Center" />
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           HorizontalOptions="Center" />
                                     <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
-                           FontSize="Small"
-                           HorizontalOptions="Center" />
+                                           FontSize="Small"
+                                           HorizontalOptions="Center" />
                                     <Label Text="{Binding Category}"
-                           FontSize="Small"
-                           HorizontalOptions="Center" />
-                                </StackLayout>
+                                           FontSize="Small"
+                                           HorizontalOptions="Center" />
+                                </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </VerticalStackLayout>
         </ScrollView>
 

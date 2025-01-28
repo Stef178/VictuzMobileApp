@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VictuzMobileApp.MVVM.View.CreateActivityPage"
              Title="Activiteit aanmaken">
-
-    <VerticalStackLayout Padding="20" Spacing="10">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
 
         <Label Text="Naam activiteit:" FontAttributes="Bold" />
         <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
@@ -26,22 +27,32 @@
         <Label Text="Beschrijving:" FontAttributes="Bold" />
         <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
 
-        <Label Text="Startdatum:" FontAttributes="Bold" />
-        <DatePicker x:Name="StartDatePicker" />
+        <Label Text="Startdatum en tijd"/>
+        <HorizontalStackLayout Spacing="10">
+            <DatePicker x:Name="StartDatePicker" 
+                           Format="dd/MM/yyyy"
+                           WidthRequest="200"/>
+            <TimePicker x:Name="StartTimePicker"
+                           Format="HH:mm"
+                           WidthRequest="100"/>
+        </HorizontalStackLayout>
 
-        <Label Text="Einddatum:" FontAttributes="Bold" />
-        <DatePicker x:Name="EndDatePicker" />
+        <Label Text="Einddatum en tijd"/>
+        <HorizontalStackLayout Spacing="10">
+            <DatePicker x:Name="EndDatePicker"
+                           Format="dd/MM/yyyy"
+                           WidthRequest="200"/>
+            <TimePicker x:Name="EndTimePicker"
+                           Format="HH:mm"
+                           WidthRequest="100"/>
+        </HorizontalStackLayout>
 
-        <Label Text="Max aantal deelnemers:" FontAttributes="Bold" />
-        <Entry x:Name="MaxParticipantsEntry" 
-               Placeholder="Bijvoorbeeld: 50" />
+        <Entry x:Name="MaxParticipantsEntry"
+                   Placeholder="Maximum aantal deelnemers"
+                   Keyboard="Numeric"/>
 
-        <Button Text="Aanmaken" 
-                Clicked="OnCreateActivityButtonClicked"
-                BackgroundColor="DarkCyan" 
-                TextColor="White" 
-                CornerRadius="10" 
-                HeightRequest="50" />
-
+        <Button Text="Activiteit aanmaken"
+                    Clicked="OnCreateActivityButtonClicked"/>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
