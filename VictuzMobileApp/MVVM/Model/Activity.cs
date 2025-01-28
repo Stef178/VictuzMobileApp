@@ -18,7 +18,7 @@ namespace VictuzMobileApp.MVVM.Model
         public DateTime StartTime { get; set; }
         [NotNull]
         public DateTime EndTime { get; set; }
-        [Ignore]
+        [NotNull]
 		public int MaxParticipants { get; set; }
 		[Ignore]
 		public Organisor? Organisor { get; set; }

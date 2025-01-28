@@ -25,6 +25,7 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="10" Spacing="20">
                 <Button Text="Ontdek evenementen" 
+                        BackgroundColor="DarkCyan"
                         HorizontalOptions="Fill" 
                         Clicked="OnDiscoverButtonClicked" />
 
