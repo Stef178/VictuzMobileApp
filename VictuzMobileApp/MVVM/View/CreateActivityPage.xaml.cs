@@ -6,14 +6,12 @@ namespace VictuzMobileApp.MVVM.View
 {
     public partial class CreateActivityPage : ContentPage
     {
-        // Maak een property voor de geselecteerde activiteit
         public Activity SelectedActivity { get; set; }
 
         public CreateActivityPage()
         {
             InitializeComponent();
 
-            // Initialiseer SelectedActivity
             SelectedActivity = new Activity();
         }
 
@@ -42,10 +40,8 @@ namespace VictuzMobileApp.MVVM.View
 
             if (photo != null)
             {
-                // Toon de foto in de afbeelding
                 ActivityImage.Source = ImageSource.FromFile(photo.Path);
 
-                // Sla het pad van de foto op in de SelectedActivity
                 SelectedActivity.PhotoPath = photo.Path;
             }
         }
@@ -92,7 +88,7 @@ namespace VictuzMobileApp.MVVM.View
                 StartTime = startDateTime,
                 EndTime = endDateTime,
                 MaxParticipants = maxParticipants,
-                PhotoPath = SelectedActivity.PhotoPath // Bewaar het pad naar de foto
+                PhotoPath = SelectedActivity.PhotoPath 
             };
 
             await App.Database.AddAsync(newActivity);
