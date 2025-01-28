@@ -3,56 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VictuzMobileApp.MVVM.View.CreateActivityPage"
              Title="Activiteit aanmaken">
-    
+
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
 
-        <Label Text="Naam activiteit:" FontAttributes="Bold" />
-        <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
+            <Label Text="Naam activiteit:" FontAttributes="Bold" />
+            <Entry x:Name="NameEntry" Placeholder="Naam van activiteit" />
 
-        <Label Text="Categorie:" FontAttributes="Bold" />
-        <Picker x:Name="CategoryTypePicker"
-        Title="Selecteer categorie"
-        SelectedIndexChanged="OnCategoryTypeChanged">
-            <Picker.Items>
-                <x:String>Workshop</x:String>
-                <x:String>Borrelavond</x:String>
-                <x:String>Game Night</x:String>
-                <x:String>Outdooractiviteit</x:String>
-                <x:String>Weekendje/excursie</x:String>
-                <x:String>Feest en thema- avond</x:String>
-            </Picker.Items>
-        </Picker>
+            <Label Text="Categorie:" FontAttributes="Bold" />
+            <Picker x:Name="CategoryTypePicker"
+                    Title="Selecteer categorie"
+                    SelectedIndexChanged="OnCategoryTypeChanged">
+                <Picker.Items>
+                    <x:String>Workshop</x:String>
+                    <x:String>Borrelavond</x:String>
+                    <x:String>Game Night</x:String>
+                    <x:String>Outdooractiviteit</x:String>
+                    <x:String>Weekendje/excursie</x:String>
+                    <x:String>Feest en thema- avond</x:String>
+                </Picker.Items>
+            </Picker>
 
-        <Label Text="Beschrijving:" FontAttributes="Bold" />
-        <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
+            <Label Text="Beschrijving:" FontAttributes="Bold" />
+            <Entry x:Name="DescriptionEntry" Placeholder="Beschrijf de activiteit" />
 
-        <Label Text="Startdatum en tijd"/>
-        <HorizontalStackLayout Spacing="10">
-            <DatePicker x:Name="StartDatePicker" 
-                           Format="dd/MM/yyyy"
-                           WidthRequest="200"/>
-            <TimePicker x:Name="StartTimePicker"
-                           Format="HH:mm"
-                           WidthRequest="100"/>
-        </HorizontalStackLayout>
+            <Label Text="Startdatum en tijd"/>
+            <HorizontalStackLayout Spacing="10">
+                <DatePicker x:Name="StartDatePicker" Format="dd/MM/yyyy" WidthRequest="200"/>
+                <TimePicker x:Name="StartTimePicker" Format="HH:mm" WidthRequest="100"/>
+            </HorizontalStackLayout>
 
-        <Label Text="Einddatum en tijd"/>
-        <HorizontalStackLayout Spacing="10">
-            <DatePicker x:Name="EndDatePicker"
-                           Format="dd/MM/yyyy"
-                           WidthRequest="200"/>
-            <TimePicker x:Name="EndTimePicker"
-                           Format="HH:mm"
-                           WidthRequest="100"/>
-        </HorizontalStackLayout>
+            <Label Text="Einddatum en tijd"/>
+            <HorizontalStackLayout Spacing="10">
+                <DatePicker x:Name="EndDatePicker" Format="dd/MM/yyyy" WidthRequest="200"/>
+                <TimePicker x:Name="EndTimePicker" Format="HH:mm" WidthRequest="100"/>
+            </HorizontalStackLayout>
 
-        <Entry x:Name="MaxParticipantsEntry"
-                   Placeholder="Maximum aantal deelnemers"
-                   Keyboard="Numeric"/>
+            <Entry x:Name="MaxParticipantsEntry" Placeholder="Maximum aantal deelnemers" Keyboard="Numeric"/>
 
-        <Button Text="Activiteit aanmaken"
-                    Clicked="OnCreateActivityButtonClicked"/>
-    </VerticalStackLayout>
+            <Label Text="Foto van de activiteit:" FontAttributes="Bold" />
+            <Button Text="Selecteer Foto" Clicked="OnSelectPhotoButtonClicked"/>
+            <Image x:Name="ActivityImage" HeightRequest="200" WidthRequest="200"/>
+
+            <Button Text="Activiteit aanmaken" Clicked="OnCreateActivityButtonClicked"/>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
