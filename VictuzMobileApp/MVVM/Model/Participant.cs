@@ -14,6 +14,9 @@ public class Participant : INotifyPropertyChanged
     public string Email { get; set; }
 
     [NotNull]
+    public string PhoneNumber { get; set; }
+
+    [NotNull]
     public string Password { get; set; }
 
     private string _profilePicturePath;
