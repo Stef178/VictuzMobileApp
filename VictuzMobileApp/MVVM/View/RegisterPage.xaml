@@ -32,7 +32,7 @@
                    FontAttributes="Bold" />
             
             <Entry x:Name="PhoneNumberEntry" 
-                   Placeholder="Voer je telefoonnummer in" 
+                   Placeholder="+31 " 
                    Keyboard="Telephone" />
 
             
