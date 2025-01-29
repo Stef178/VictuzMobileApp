@@ -58,8 +58,9 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
+		<PackageReference Include="Captcha" Version="4.4.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.30" />
@@ -128,6 +129,12 @@
 	  <MauiXaml Update="MVVM\View\WinGamesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+	  <PackageReference Include="Xamarin.GooglePlayServices.SafetyNet">
+	    <Version>118.1.0.4</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

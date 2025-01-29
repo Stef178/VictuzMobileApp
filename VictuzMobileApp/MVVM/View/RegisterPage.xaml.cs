@@ -14,7 +14,8 @@ namespace VictuzMobileApp.MVVM.View
 		{
 			string name = UsernameEntry.Text?.Trim();
 			string email = EmailEntry.Text?.Trim();
-			string password = PasswordEntry.Text;
+            string phonenumber = PhoneNumberEntry.Text;
+            string password = PasswordEntry.Text;
 
 			if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
 			{
@@ -26,7 +27,9 @@ namespace VictuzMobileApp.MVVM.View
 			{
 				Name = name,
 				Email = email,
-				Password = password
+                PhoneNumber = phonenumber,
+                Password = password
+				
 			};
 
 			try
