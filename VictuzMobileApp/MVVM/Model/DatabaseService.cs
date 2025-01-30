@@ -21,25 +21,26 @@ namespace VictuzMobileApp.MVVM.View
     {
         private SQLiteConnection _connection;
 
-        // Pad naar de database (in de lokale appmap)
         public DatabaseService()
         {
             var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "photos.db3");
             _connection = new SQLiteConnection(databasePath);
-            _connection.CreateTable<PhotoModel>(); // Maak de tabel aan als deze nog niet bestaat
+            _connection.CreateTable<PhotoModel>();
         }
 
-        // Voeg een foto toe aan de database
         public void AddPhoto(PhotoModel photo)
         {
             _connection.Insert(photo);
         }
 
-        // Haal alle foto's op uit de database
         public List<PhotoModel> GetAllPhotos()
         {
             return _connection.Table<PhotoModel>().ToList();
         }
+
+        public void DeletePhoto(PhotoModel photo)
+        {
+            _connection.Delete(photo);
+        }
     }
 }
-

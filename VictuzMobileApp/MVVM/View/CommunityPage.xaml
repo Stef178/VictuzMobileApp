@@ -24,7 +24,11 @@
                         <DataTemplate>
                             <Border Padding="10">
                                 <VerticalStackLayout>
-                                    <Image Source="{Binding ImagePath}" HeightRequest="250" Aspect="AspectFill"/>
+                                    <Image Source="{Binding ImagePath}" HeightRequest="250" Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnPhotoTapped" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <Label Text="{Binding Caption}" FontSize="14"/>
                                 </VerticalStackLayout>
                             </Border>
