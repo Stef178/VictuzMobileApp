@@ -4,7 +4,8 @@
              xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              xmlns:local="clr-namespace:VictuzMobileApp"
              x:Class="VictuzMobileApp.MVVM.View.HomePage"
-             Title="HomePage">
+             Title="HomePage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

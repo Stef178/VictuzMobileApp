@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              x:Class="VictuzMobileApp.MVVM.View.SettingsPage"
-             Title="SettingsPage">
+             Title="SettingsPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -15,6 +16,13 @@
             <Label Text="Welcome to the SettingsPage" 
                HorizontalOptions="Center" 
                VerticalOptions="Center" />
+
+
+            <!-- Knop om no blue light filter te toggelen -->
+            <Button Text="Toggle Blue Light Filter" 
+                    Clicked="OnNoBlueLightButtonClicked"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
         </StackLayout>
 
         <!-- IconBar -->
