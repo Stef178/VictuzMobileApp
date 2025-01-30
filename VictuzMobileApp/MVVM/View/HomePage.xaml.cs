@@ -86,4 +86,31 @@ public partial class HomePage : ContentPage
 	{
 		await Navigation.PushAsync(new DatabaseBrowserPage(Path.Combine(FileSystem.AppDataDirectory, "VictuzMobile.db")));
 	}
+    private async void OnReserveTicketClicked(object sender, EventArgs e)
+    {
+        if (App.CurrentUser == null)
+        {
+            await DisplayAlert("Fout", "U moet ingelogd zijn om een ticket te reserveren.", "OK");
+            return;
+        }
+
+        var selectedActivity = UpcomingEvents.FirstOrDefault(); // Voor nu het eerste event pakken
+        if (selectedActivity == null)
+        {
+            await DisplayAlert("Fout", "Er zijn geen evenementen om te reserveren.", "OK");
+            return;
+        }
+
+        var ticket = new Ticket
+        {
+            ParticipantId = App.CurrentUser.Id,
+            ActivityId = selectedActivity.Id,
+            Price = 0, // Pas dit aan als er een prijs is
+            IsPaid = false
+        };
+
+        await App.Database.AddAsync(ticket);
+        await DisplayAlert("Succes", "Uw ticket is gereserveerd en toegevoegd aan uw Wallet!", "OK");
+    }
+
 }

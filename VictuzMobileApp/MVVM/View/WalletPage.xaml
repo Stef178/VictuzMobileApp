@@ -10,11 +10,32 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <StackLayout Grid.Row="0">
-            <Label Text="Welcome to the WalletPage" 
-           HorizontalOptions="Center" 
-           VerticalOptions="Center" />
-        </StackLayout>
+        <CollectionView ItemsSource="{Binding ReservedTickets}"
+                EmptyView="Geen tickets gevonden">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="DarkCyan"
+                   CornerRadius="10"
+                   Padding="10"
+                   Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Activity.Name}"
+                           FontAttributes="Bold"
+                           FontSize="Medium" />
+                            <Label Text="{Binding Activity.StartTime, StringFormat='Datum: {0:dd MMM yyyy HH:mm}'}"
+                           FontSize="Small" />
+                            <Label Text="{Binding Price, StringFormat='Prijs: €{0:F2}'}"
+                           FontSize="Small" />
+                            <Label Text="{Binding IsPaid, Converter={StaticResource BoolToTextConverter}}"
+                           FontSize="Small" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
 
         <controls:IconBar Grid.Row="1" />
     </Grid>
