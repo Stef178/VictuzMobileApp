@@ -113,4 +113,15 @@ public partial class HomePage : ContentPage
         await DisplayAlert("Succes", "Uw ticket is gereserveerd en toegevoegd aan uw Wallet!", "OK");
     }
 
+    private async void OnDetailsButtonClicked(object sender, EventArgs e)
+    {
+        // Haal de geselecteerde activiteit op
+        var button = (Button)sender;
+        var activity = (Activity)button.BindingContext;
+
+        // Navigeer naar de detailpagina
+        await Navigation.PushAsync(new ActivityDetailPage(activity));
+    }
+
+
 }
