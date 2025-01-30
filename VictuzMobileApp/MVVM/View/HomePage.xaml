@@ -34,36 +34,54 @@
                        FontSize="16" />
 
                 <CollectionView ItemsSource="{Binding UpcomingEvents}"
-                              EmptyView="Geen aankomende evenementen gevonden">
+                EmptyView="Geen aankomende evenementen gevonden">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BorderColor="DarkCyan"
-                                   CornerRadius="10"
-                                   Padding="10"
-                                   Margin="5">
-                                <HorizontalStackLayout Spacing="10">
-                                    <Image Source="{Binding PhotoPath}" 
-                                           HeightRequest="80" 
-                                           WidthRequest="80" 
-                                           Aspect="AspectFill" />
+                   CornerRadius="10"
+                   Padding="10"
+                   Margin="5">
+                                <VerticalStackLayout Spacing="10">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Image Source="{Binding PhotoPath}" 
+                               HeightRequest="80" 
+                               WidthRequest="80" 
+                               Aspect="AspectFill" />
 
-                                    <VerticalStackLayout VerticalOptions="Center">
-                                        <Label Text="{Binding Name}"
-                                               FontAttributes="Bold"
-                                               FontSize="Medium"
-                                               HorizontalOptions="Center" />
-                                        <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
-                                               FontSize="Small"
-                                               HorizontalOptions="Center" />
-                                        <Label Text="{Binding Category}"
-                                               FontSize="Small"
-                                               HorizontalOptions="Center" />
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
+                                        <VerticalStackLayout VerticalOptions="Center">
+                                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center" />
+                                            <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
+                                   FontSize="Small"
+                                   HorizontalOptions="Center" />
+                                            <Label Text="{Binding Category}"
+                                   FontSize="Small"
+                                   HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+
+                                    <Button Text="Details"
+                            BackgroundColor="DarkCyan"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Clicked="OnDetailsButtonClicked"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center" />
+                                    <Button Text="Reserveer"
+                            BackgroundColor="DarkCyan"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Clicked="OnReserveTicketClicked"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center" />
+                                </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
             </VerticalStackLayout>
         </ScrollView>
 

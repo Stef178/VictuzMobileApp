@@ -58,6 +58,11 @@ namespace VictuzMobileApp.MVVM.Data
         {
             return _database.InsertAllAsync(items);
         }
+        public Task<T> GetAsync<T>(int id) where T : new()
+        {
+            return _database.FindAsync<T>(id);
+        }
+
 
         public Participant GetActiveUser()
         {

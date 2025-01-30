@@ -10,12 +10,18 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <!-- Hoofdinhoud -->
-        <StackLayout Grid.Row="0">
-            <Label Text="Welcome to the ActivityDetailPage" 
-           HorizontalOptions="Center" 
-           VerticalOptions="Center" />
+        <StackLayout Grid.Row="0" Padding="10">
+            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large"/>
+            <Label Text="{Binding Description}" FontSize="Medium" Padding="5"/>
+            <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}" FontSize="Small"/>
+            <Label Text="{Binding EndTime, StringFormat='End: {0:dd MMM yyyy HH:mm}'}" FontSize="Small"/>
+            <Label Text="{Binding Category}" FontSize="Small"/>
+            <Label Text="{Binding MaxParticipants, StringFormat='Max deelnemers: {0}'}" FontSize="Small" />
+            <Image Source="{Binding PhotoPath}" HeightRequest="200" WidthRequest="200" Aspect="AspectFill" />
         </StackLayout>
+
+
+
 
         <!-- IconBar -->
         <controls:IconBar Grid.Row="1" />
