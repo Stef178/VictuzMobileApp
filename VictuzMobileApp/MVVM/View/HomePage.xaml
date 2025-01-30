@@ -13,6 +13,14 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
+
+        <Label x:Name="WeatherLabel"
+               Text="Loading weather..."
+               FontSize="Medium"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               Margin="10" />
+
         <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10">
             <ImageButton 
                 Source="{Binding App.CurrentUser.ProfilePicturePath, FallbackValue='person.png'}"
@@ -38,50 +46,49 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BorderColor="DarkCyan"
-                   CornerRadius="10"
-                   Padding="10"
-                   Margin="5">
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5">
                                 <VerticalStackLayout Spacing="10">
                                     <HorizontalStackLayout Spacing="10">
                                         <Image Source="{Binding PhotoPath}" 
-                               HeightRequest="80" 
-                               WidthRequest="80" 
-                               Aspect="AspectFill" />
+                                               HeightRequest="80" 
+                                               WidthRequest="80" 
+                                               Aspect="AspectFill" />
 
                                         <VerticalStackLayout VerticalOptions="Center">
                                             <Label Text="{Binding Name}"
-                                   FontAttributes="Bold"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Center" />
+                                                   FontAttributes="Bold"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Center" />
                                             <Label Text="{Binding StartTime, StringFormat='Start: {0:dd MMM yyyy HH:mm}'}"
-                                   FontSize="Small"
-                                   HorizontalOptions="Center" />
+                                                   FontSize="Small"
+                                                   HorizontalOptions="Center" />
                                             <Label Text="{Binding Category}"
-                                   FontSize="Small"
-                                   HorizontalOptions="Center" />
+                                                   FontSize="Small"
+                                                   HorizontalOptions="Center" />
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
 
                                     <Button Text="Details"
-                            BackgroundColor="DarkCyan"
-                            TextColor="White"
-                            CornerRadius="8"
-                            Clicked="OnDetailsButtonClicked"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center" />
+                                            BackgroundColor="DarkCyan"
+                                            TextColor="White"
+                                            CornerRadius="8"
+                                            Clicked="OnDetailsButtonClicked"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Center" />
                                     <Button Text="Reserveer"
-                            BackgroundColor="DarkCyan"
-                            TextColor="White"
-                            CornerRadius="8"
-                            Clicked="OnReserveTicketClicked"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center" />
+                                            BackgroundColor="DarkCyan"
+                                            TextColor="White"
+                                            CornerRadius="8"
+                                            Clicked="OnReserveTicketClicked"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Center" />
                                 </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </VerticalStackLayout>
         </ScrollView>
 
