@@ -28,6 +28,27 @@
                                 <Label Text="{Binding Category}"
                                        FontSize="Small"
                                        HorizontalOptions="Center" />
+                                <Image Source="{Binding PhotoPath}" 
+                               HeightRequest="80" 
+                               WidthRequest="80" 
+                               Aspect="AspectFill" />
+
+
+                                <Button Text="Details"
+                            BackgroundColor="DarkCyan"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Clicked="OnDetailsButtonClicked"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center" />
+                                <Button Text="Reserveer"
+                            BackgroundColor="DarkCyan"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Clicked="OnReserveTicketClicked"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center" />
+
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

@@ -42,7 +42,6 @@
                    Padding="10"
                    Margin="5">
                                 <VerticalStackLayout Spacing="10">
-                                    <!-- Verander dit naar VerticalStackLayout -->
                                     <HorizontalStackLayout Spacing="10">
                                         <Image Source="{Binding PhotoPath}" 
                                HeightRequest="80" 
@@ -63,7 +62,6 @@
                                         </VerticalStackLayout>
                                     </HorizontalStackLayout>
 
-                                    <!-- Plaats de knoppen onder elkaar -->
                                     <Button Text="Details"
                             BackgroundColor="DarkCyan"
                             TextColor="White"
@@ -71,8 +69,6 @@
                             Clicked="OnDetailsButtonClicked"
                             HorizontalOptions="Fill"
                             VerticalOptions="Center" />
-                                    <!-- VerticalOptions aanpassen naar Center -->
-
                                     <Button Text="Reserveer"
                             BackgroundColor="DarkCyan"
                             TextColor="White"
@@ -80,7 +76,6 @@
                             Clicked="OnReserveTicketClicked"
                             HorizontalOptions="Fill"
                             VerticalOptions="Center" />
-                                    <!-- VerticalOptions aanpassen naar Center -->
                                 </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>
