@@ -24,7 +24,7 @@
                         <DataTemplate>
                             <Border Padding="10">
                                 <VerticalStackLayout>
-                                    <Image Source="{Binding ImagePath}" HeightRequest="200" Aspect="AspectFill"/>
+                                    <Image Source="{Binding ImagePath}" HeightRequest="250" Aspect="AspectFill"/>
                                     <Label Text="{Binding Caption}" FontSize="14"/>
                                 </VerticalStackLayout>
                             </Border>

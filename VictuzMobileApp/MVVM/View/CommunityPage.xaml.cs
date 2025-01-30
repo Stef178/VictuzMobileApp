@@ -17,11 +17,11 @@ public partial class CommunityPage : ContentPage
     {
         InitializeComponent();
 
-        // Hardcoded voorbeeldfoto's toevoegen
+        // Hardcoded voorbeeldfoto's
         _photoList.Add(new PhotoModel { ImagePath = "example1.png", Caption = "Eerste voorbeeldfoto" });
         _photoList.Add(new PhotoModel { ImagePath = "example2.png", Caption = "Tweede voorbeeldfoto" });
 
-        // Koppel de lijst aan de UI
+        
         PhotoCollectionView.ItemsSource = _photoList;
     }
 
@@ -30,10 +30,10 @@ public partial class CommunityPage : ContentPage
         var photo = await MediaPicker.PickPhotoAsync();
         if (photo != null)
         {
-            // Vraag om een onderschrift
+            // onderschrift
             string caption = await DisplayPromptAsync("Foto Toevoegen", "Onderschrift toevoegen:");
 
-            // Zorg dat de gebruiker iets heeft ingevuld
+            
             if (string.IsNullOrWhiteSpace(caption))
             {
                 caption = "Geen onderschrift opgegeven";
@@ -45,7 +45,7 @@ public partial class CommunityPage : ContentPage
                 Caption = caption
             });
 
-            // UI verversen
+            // verversen
             PhotoCollectionView.ItemsSource = null;
             PhotoCollectionView.ItemsSource = _photoList;
         }
