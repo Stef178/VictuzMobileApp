@@ -4,7 +4,6 @@
              x:Class="VictuzMobileApp.Controls.IconBar"
              Padding="0"
              Margin="0">
-    <!-- Iconbar -->
     <Grid Grid.Row="1" BackgroundColor="DarkCyan" HorizontalOptions="FillAndExpand" HeightRequest="50">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -14,7 +13,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Iconen voor navigatie -->
         <ImageButton Grid.Column="0" Source="home.png" 
                      Command="{Binding NavigateCommand}" 
                      CommandParameter="HomePage"
@@ -22,7 +20,7 @@
                      VerticalOptions="Center" />
         <ImageButton Grid.Column="1" Source="search.png" 
                      Command="{Binding NavigateCommand}" 
-                     CommandParameter="SearchPage"
+                     CommandParameter="DiscoveryPage"
                      HorizontalOptions="Center" 
                      VerticalOptions="Center" />
         <ImageButton Grid.Column="2" Source="groups.png" 

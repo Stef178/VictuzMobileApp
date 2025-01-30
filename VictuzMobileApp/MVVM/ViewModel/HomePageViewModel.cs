@@ -25,7 +25,7 @@ namespace VictuzMobileApp.MVVM.ViewModel
             Page page = pageName switch
             {
 				"HomePage" => new VictuzMobileApp.MVVM.View.HomePage(),
-				"SearchPage" => new VictuzMobileApp.MVVM.View.SearchPage(),
+				"DiscoveryPage" => new VictuzMobileApp.MVVM.View.DiscoverPage(),
 				"CommunityPage" => new VictuzMobileApp.MVVM.View.CommunityPage(),
 				"WalletPage" => new VictuzMobileApp.MVVM.View.WalletPage(),
 				"SettingsPage" => new VictuzMobileApp.MVVM.View.SettingsPage(),
