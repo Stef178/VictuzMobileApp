@@ -30,14 +30,25 @@ public partial class CommunityPage : ContentPage
         var photo = await MediaPicker.PickPhotoAsync();
         if (photo != null)
         {
+            // Vraag om een onderschrift
+            string caption = await DisplayPromptAsync("Foto Toevoegen", "Onderschrift toevoegen:");
+
+            // Zorg dat de gebruiker iets heeft ingevuld
+            if (string.IsNullOrWhiteSpace(caption))
+            {
+                caption = "Geen onderschrift opgegeven";
+            }
+
             _photoList.Add(new PhotoModel
             {
                 ImagePath = photo.FullPath,
-                Caption = "Nieuwe foto"
+                Caption = caption
             });
 
+            // UI verversen
             PhotoCollectionView.ItemsSource = null;
-            PhotoCollectionView.ItemsSource = _photoList; // UI handmatig verversen
+            PhotoCollectionView.ItemsSource = _photoList;
         }
     }
+
 }

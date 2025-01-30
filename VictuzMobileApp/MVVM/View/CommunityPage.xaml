@@ -17,7 +17,7 @@
                        HorizontalOptions="Center" 
                        VerticalOptions="Center" />
 
-                <Button Text="Foto Toevoegen" Clicked="OnAddPhotoClicked"/>
+                <Button Text="Foto posten" Clicked="OnAddPhotoClicked"/>
 
                 <CollectionView x:Name="PhotoCollectionView">
                     <CollectionView.ItemTemplate>
