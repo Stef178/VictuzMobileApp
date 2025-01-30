@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <form id="captchaForm">
+        <div class="g-recaptcha" data-sitekey="6LdATMgqAAAAALhP6zN95dhzzxzm3uUStGdCXgQE" data-callback="onSubmit"></div>
+    </form>
+
+    <script>
+        function onSubmit(token) {
+            window.chrome.webview.postMessage(token);
+        }
+    </script>
+</body>
+</html>

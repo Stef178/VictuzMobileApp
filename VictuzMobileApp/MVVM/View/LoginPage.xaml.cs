@@ -1,57 +1,128 @@
+using System.Net.Http;
+using System.Threading.Tasks;
 using VictuzMobileApp.MVVM.Data;
 using VictuzMobileApp.MVVM.Model;
+using Microsoft.Maui.Controls;
+using Newtonsoft.Json.Linq;
 
-namespace VictuzMobileApp.MVVM.View;
-
-public partial class LoginPage : ContentPage
+namespace VictuzMobileApp.MVVM.View
 {
-    public LoginPage()
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
-    }
+        private const string SecretKey = "6LdATMgqAAAAALQlY-u-DShEK0vL4RBKAplPVEST"; // Vervang met je echte Secret Key
 
-    private async void OnLoginButtonClicked(object sender, EventArgs e)
-    {
-        string email = EmailEntry.Text?.Trim();
-        string password = PasswordEntry.Text?.Trim();
+        private string _captchaToken;
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        public LoginPage()
         {
-            await DisplayAlert("Fout", "Vul alstublieft zowel e-mailadres als wachtwoord in.", "OK");
-            return;
+            InitializeComponent();
+            LoadCaptcha();
         }
 
-        try
+        private void LoadCaptcha()
         {
-            if (email == App.AdminUser.Email && password == App.AdminUser.Password)
+            CaptchaWebView.Navigating += CaptchaWebView_Navigating;
+            CaptchaWebView.Source = new HtmlWebViewSource
             {
-                App.CurrentUser = App.AdminUser; 
-                await DisplayAlert("Succes", "Admin succesvol ingelogd!", "OK");
+                Html = @"<!DOCTYPE html>
+                        <html>
+                        <head>
+                            <script src='https://www.google.com/recaptcha/api.js'></script>
+                        </head>
+                        <body>
+                            <form>
+                                <div class='g-recaptcha' data-sitekey='6LdATMgqAAAAALhP6zN95dhzzxzm3uUStGdCXgQE' data-callback='onSubmit'></div>
+                            </form>
+                            <script>
+                                function onSubmit(token) {
+                                    window.location.href = 'callback://' + token;
+                                }
+                            </script>
+                        </body>
+                        </html>"
+            };
+        }
 
-                Application.Current.MainPage = new NavigationPage(new MainPage());
+
+
+        private async void CaptchaWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            if (e.Url.StartsWith("callback://"))
+            {
+                e.Cancel = true; // Dit werkt nu correct!
+
+                _captchaToken = e.Url.Replace("callback://", "");
+                bool isValid = await ValidateCaptchaAsync(_captchaToken);
+
+                if (isValid)
+                {
+                    await DisplayAlert("Succes", "Captcha gevalideerd!", "OK");
+                    LoginButton.IsEnabled = true;
+                }
+                else
+                {
+                    await DisplayAlert("Fout", "Captcha ongeldig, probeer opnieuw.", "OK");
+                }
+            }
+        }
+
+        private async Task<bool> ValidateCaptchaAsync(string token)
+        {
+            using HttpClient client = new HttpClient();
+            var response = await client.PostAsync(
+                "https://www.google.com/recaptcha/api/siteverify",
+                new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("secret", SecretKey),
+                    new KeyValuePair<string, string>("response", token)
+                })
+            );
+
+            var json = await response.Content.ReadAsStringAsync();
+            return json.Contains("\"success\": true");
+        }
+
+        private async void OnLoginButtonClicked(object sender, EventArgs e)
+        {
+            string email = EmailEntry.Text?.Trim();
+            string password = PasswordEntry.Text?.Trim();
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                await DisplayAlert("Fout", "Vul alstublieft zowel e-mailadres als wachtwoord in.", "OK");
                 return;
             }
 
-            var users = await App.Database.GetAllAsync<Participant>();
-            var matchingUser = users.FirstOrDefault(u => u.Email == email && u.Password == password);
-
-            if (matchingUser != null)
+            try
             {
-                await App.Database.SetActiveUser(matchingUser.Id);
-                App.CurrentUser = matchingUser;
-                await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
+                if (email == App.AdminUser.Email && password == App.AdminUser.Password)
+                {
+                    App.CurrentUser = App.AdminUser;
+                    await DisplayAlert("Succes", "Admin succesvol ingelogd!", "OK");
+                    Application.Current.MainPage = new NavigationPage(new MainPage());
+                    return;
+                }
 
-                Application.Current.MainPage = new NavigationPage(new HomePage());
+                var users = await App.Database.GetAllAsync<Participant>();
+                var matchingUser = users.FirstOrDefault(u => u.Email == email && u.Password == password);
+
+                if (matchingUser != null)
+                {
+                    await App.Database.SetActiveUser(matchingUser.Id);
+                    App.CurrentUser = matchingUser;
+                    await DisplayAlert("Succes", "U bent succesvol ingelogd!", "OK");
+
+                    Application.Current.MainPage = new NavigationPage(new HomePage());
+                }
+                else
+                {
+                    await DisplayAlert("Fout", "Onjuist e-mailadres of wachtwoord. Probeer het opnieuw.", "OK");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await DisplayAlert("Fout", "Onjuist e-mailadres of wachtwoord. Probeer het opnieuw.", "OK");
+                await DisplayAlert("Fout", $"Er is iets misgegaan: {ex.Message}", "OK");
             }
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Fout", $"Er is iets misgegaan: {ex.Message}", "OK");
         }
     }
-
 }

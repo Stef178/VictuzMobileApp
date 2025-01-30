@@ -4,29 +4,28 @@
              x:Class="VictuzMobileApp.MVVM.View.LoginPage"
              Title="Inloggen"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
+
     <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
         <Label Text="Victuz - Login" 
                FontSize="24" 
                HorizontalOptions="Center" 
                TextColor="Black" />
 
-        <Label Text="E-mailadres:" 
-               FontAttributes="Bold" />
-        <Entry x:Name="EmailEntry" 
-               Placeholder="Voer je e-mailadres in" 
-               Keyboard="Email" />
+        <Label Text="E-mailadres:" FontAttributes="Bold" />
+        <Entry x:Name="EmailEntry" Placeholder="Voer je e-mailadres in" Keyboard="Email" />
 
-        <Label Text="Wachtwoord:" 
-               FontAttributes="Bold" />
-        <Entry x:Name="PasswordEntry" 
-               Placeholder="Voer je wachtwoord in" 
-               IsPassword="True" />
+        <Label Text="Wachtwoord:" FontAttributes="Bold" />
+        <Entry x:Name="PasswordEntry" Placeholder="Voer je wachtwoord in" IsPassword="True" />
 
-        <Button Text="Inloggen" 
+        <Label Text="Verifieer dat u geen robot bent:" FontAttributes="Bold" />
+        <WebView x:Name="CaptchaWebView" HeightRequest="150" WidthRequest="300" Navigating="CaptchaWebView_Navigating" />
+
+        <Button x:Name="LoginButton" Text="Inloggen" 
                 Clicked="OnLoginButtonClicked" 
                 BackgroundColor="DarkCyan" 
                 TextColor="White" 
                 CornerRadius="10" 
-                HeightRequest="50" />
+                HeightRequest="50"
+                IsEnabled="False" />
     </VerticalStackLayout>
 </ContentPage>
