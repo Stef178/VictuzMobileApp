@@ -8,6 +8,7 @@ namespace VictuzMobileApp.MVVM.View
 	{
 		public ObservableCollection<Activity> FilteredEvents { get; set; } = new ObservableCollection<Activity>();
 		private List<Activity> AllEvents { get; set; } = new List<Activity>();
+		private bool SortAscending = true;
 
 		public DiscoverPage()
 		{
@@ -21,7 +22,7 @@ namespace VictuzMobileApp.MVVM.View
 			{
 				var activities = await App.Database.GetAllAsync<Activity>();
 				AllEvents = activities.OrderBy(a => a.StartTime).ToList();
-				FilteredEvents = new ObservableCollection<Activity>(AllEvents);
+				UpdateFilteredEvents();
 				BindingContext = this;
 			}
 			catch (Exception ex)
@@ -33,10 +34,31 @@ namespace VictuzMobileApp.MVVM.View
 
 		private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
 		{
-			string searchText = e.NewTextValue.ToLower();
-			FilteredEvents.Clear();
+			UpdateFilteredEvents(e.NewTextValue);
+		}
 
-			foreach (var activity in AllEvents.Where(a => a.Name.ToLower().Contains(searchText)))
+		private void OnSortButtonClicked(object sender, EventArgs e)
+		{
+			SortAscending = !SortAscending;
+			UpdateFilteredEvents();
+		}
+
+		private void UpdateFilteredEvents(string searchText = "")
+		{
+			searchText = searchText?.ToLower() ?? string.Empty;
+			var filtered = AllEvents.Where(a => a.Name.ToLower().Contains(searchText));
+
+			if (SortAscending)
+			{
+				filtered = filtered.OrderBy(a => a.StartTime);
+			}
+			else
+			{
+				filtered = filtered.OrderByDescending(a => a.StartTime);
+			}
+
+			FilteredEvents.Clear();
+			foreach (var activity in filtered)
 			{
 				FilteredEvents.Add(activity);
 			}
