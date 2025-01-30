@@ -68,7 +68,7 @@ namespace VictuzMobileApp.MVVM.Data
         {
             try
             {
-                // Haal de actieve gebruiker op (controleer op IsActive = true)
+               
                 return _database.Table<Participant>().Where(p => p.IsActive).FirstOrDefaultAsync().Result;
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace VictuzMobileApp.MVVM.Data
         {
             try
             {
-                // Zet alle gebruikers op niet-actief
+                
                 var allParticipants = await _database.Table<Participant>().ToListAsync();
                 foreach (var participant in allParticipants)
                 {
@@ -90,7 +90,7 @@ namespace VictuzMobileApp.MVVM.Data
                     await _database.UpdateAsync(participant);
                 }
 
-                // Zet de opgegeven gebruiker op actief
+               
                 var activeUser = await _database.Table<Participant>().Where(p => p.Id == userId).FirstOrDefaultAsync();
                 if (activeUser != null)
                 {
