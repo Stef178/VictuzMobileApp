@@ -53,12 +53,14 @@
                    Placeholder="Maximum aantal deelnemers"
                    Keyboard="Numeric"/>
 
-            <Button Text="Activiteit aanmaken"
-                    Clicked="OnCreateActivityButtonClicked"/>
+
 
             <Label Text="Foto van de activiteit:" FontAttributes="Bold" />
         <Button Text="Selecteer Foto" Clicked="OnSelectPhotoButtonClicked"/>
         <Image x:Name="ActivityImage" HeightRequest="200" WidthRequest="200"/>
+
+            <Button Text="Activiteit aanmaken"
+                    Clicked="OnCreateActivityButtonClicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
