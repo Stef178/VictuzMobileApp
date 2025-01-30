@@ -13,7 +13,7 @@
         <!-- Hoofdinhoud -->
         <ScrollView>
             <StackLayout Grid.Row="0">
-                <Label Text="Welcome to the CommunityPage" 
+                <Label Text="" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center" />
 
