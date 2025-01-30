@@ -5,12 +5,16 @@
              Title="DiscoverPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0" Padding="10">
-            <StackLayout BindableLayout.ItemsSource="{Binding AllEvents}">
+        <SearchBar Grid.Row="0"
+                   Placeholder="Zoek evenementen..."
+                   TextChanged="OnSearchTextChanged" />
+
+        <ScrollView Grid.Row="1" Padding="10">
+            <StackLayout BindableLayout.ItemsSource="{Binding FilteredEvents}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="DarkCyan"
