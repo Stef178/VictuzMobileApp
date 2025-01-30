@@ -18,12 +18,14 @@
             <Label Text="{Binding Category}" FontSize="Small"/>
             <Label Text="{Binding MaxParticipants, StringFormat='Max deelnemers: {0}'}" FontSize="Small" />
             <Image Source="{Binding PhotoPath}" HeightRequest="200" WidthRequest="200" Aspect="AspectFill" />
+        
+        <Button Text="Navigeer naar dit evenement"
+            BackgroundColor="DarkCyan"
+            TextColor="White"
+            Clicked="OnNavigateToEventClicked"
+            HeightRequest="35" WidthRequest="250" />
         </StackLayout>
 
-
-
-
-        <!-- IconBar -->
         <controls:IconBar Grid.Row="1" />
     </Grid>
 </ContentPage>
