@@ -22,7 +22,7 @@ namespace VictuzMobileApp.MVVM.View
 
                 AllEvents = activities.OrderBy(a => a.StartTime).ToList();
 
-                // Filter upcoming events (events with start time in the future)
+                
                 UpcomingEvents = AllEvents.Where(a => a.StartTime > DateTime.Now).ToList();
 
                 BindingContext = this;
@@ -42,7 +42,7 @@ namespace VictuzMobileApp.MVVM.View
                 return;
             }
 
-            var selectedActivity = (Activity)((Button)sender).BindingContext; // Haal de geselecteerde activiteit op
+            var selectedActivity = (Activity)((Button)sender).BindingContext;
 
             if (selectedActivity == null)
             {
@@ -50,13 +50,13 @@ namespace VictuzMobileApp.MVVM.View
                 return;
             }
 
-            // Controleer of de Participants collectie geïnitieerd is
+            
             if (selectedActivity.Participants == null)
             {
                 selectedActivity.Participants = new List<Participant>();
             }
 
-            // Check of het evenement al vol is
+            
             if (selectedActivity.Participants.Count >= selectedActivity.MaxParticipants)
             {
                 await DisplayAlert("Vol", "Dit evenement is volgeboekt.", "OK");
@@ -67,13 +67,13 @@ namespace VictuzMobileApp.MVVM.View
             {
                 ParticipantId = App.CurrentUser.Id,
                 ActivityId = selectedActivity.Id,
-                Price = 0, // Pas dit aan als er een prijs is
+                Price = 0, 
                 IsPaid = false
             };
 
             await App.Database.AddAsync(ticket);
-            selectedActivity.Participants.Add(App.CurrentUser); // Voeg deelnemer toe aan de activiteit
-            await App.Database.UpdateAsync(selectedActivity); // Update de activiteit met de nieuwe deelnemer
+            selectedActivity.Participants.Add(App.CurrentUser); 
+            await App.Database.UpdateAsync(selectedActivity); 
 
             await DisplayAlert("Succes", "Uw ticket is gereserveerd en toegevoegd aan uw Wallet!", "OK");
         }
@@ -81,11 +81,11 @@ namespace VictuzMobileApp.MVVM.View
 
         private async void OnDetailsButtonClicked(object sender, EventArgs e)
         {
-            // Haal de geselecteerde activiteit op
+            
             var button = (Button)sender;
             var activity = (Activity)button.BindingContext;
 
-            // Navigeer naar de detailpagina
+            
             await Navigation.PushAsync(new ActivityDetailPage(activity));
         }
     }

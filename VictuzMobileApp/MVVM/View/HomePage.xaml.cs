@@ -94,7 +94,7 @@ public partial class HomePage : ContentPage
             return;
         }
 
-        var selectedActivity = UpcomingEvents.FirstOrDefault(); // Voor nu het eerste event pakken
+        var selectedActivity = UpcomingEvents.FirstOrDefault(); 
         if (selectedActivity == null)
         {
             await DisplayAlert("Fout", "Er zijn geen evenementen om te reserveren.", "OK");
@@ -105,7 +105,7 @@ public partial class HomePage : ContentPage
         {
             ParticipantId = App.CurrentUser.Id,
             ActivityId = selectedActivity.Id,
-            Price = 0, // Pas dit aan als er een prijs is
+            Price = 0, 
             IsPaid = false
         };
 
@@ -115,11 +115,11 @@ public partial class HomePage : ContentPage
 
     private async void OnDetailsButtonClicked(object sender, EventArgs e)
     {
-        // Haal de geselecteerde activiteit op
+        
         var button = (Button)sender;
         var activity = (Activity)button.BindingContext;
 
-        // Navigeer naar de detailpagina
+       
         await Navigation.PushAsync(new ActivityDetailPage(activity));
     }
 
