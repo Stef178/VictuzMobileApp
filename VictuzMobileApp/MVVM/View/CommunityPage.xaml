@@ -15,6 +15,21 @@
             <Label Text="Welcome to the CommunityPage" 
                HorizontalOptions="Center" 
                VerticalOptions="Center" />
+
+            <Button Text="Foto Toevoegen" Clicked="OnAddPhotoClicked"/>
+
+            <CollectionView x:Name="PhotoCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding ImagePath}" HeightRequest="200" Aspect="AspectFill"/>
+                                <Label Text="{Binding Caption}" FontSize="14"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
 
         <!-- IconBar -->
