@@ -32,6 +32,18 @@ namespace VictuzMobileApp.MVVM.ViewModel
             }
         }
 
+        private string _userName;
+        public string UserName
+        {
+            get => _userName;
+            set
+            {
+                _userName = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private string _birthDate;
         public string BirthDate
         {
@@ -96,18 +108,20 @@ namespace VictuzMobileApp.MVVM.ViewModel
             var currentUser = App.CurrentUser;
             if (currentUser != null)
             {
-                // Vul de ViewModel-gegevens met de huidige gebruiker
-                var nameParts = currentUser.Name.Split(' ');
-                FirstName = nameParts.Length > 0 ? nameParts[0] : string.Empty;
-                LastName = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+                UserName = currentUser.Name;
+                FirstName = currentUser.Name.Split(' ')[0];
+                LastName = currentUser.Name.Contains(" ") ? currentUser.Name.Split(' ')[1] : "";
                 BirthDate = currentUser.BirthDate;
                 City = currentUser.City;
                 Country = currentUser.Country;
+
+                // Controleer of er een profielfoto is ingesteld, zo niet, gebruik person.png
                 ProfileImage = string.IsNullOrEmpty(currentUser.ProfilePicturePath)
-                    ? "person.png" // Standaard afbeelding
+                    ? "person.png"
                     : currentUser.ProfilePicturePath;
             }
         }
+
 
         private async Task SaveProfile()
         {
@@ -116,7 +130,7 @@ namespace VictuzMobileApp.MVVM.ViewModel
                 var currentUser = App.CurrentUser;
                 if (currentUser != null)
                 {
-                    currentUser.Name = $"{FirstName} {LastName}";
+                    currentUser.Name = UserName;
                     currentUser.ProfilePicturePath = ProfileImage;
                     OnPropertyChanged(nameof(ProfileImage));
                     currentUser.BirthDate = BirthDate;
@@ -172,8 +186,12 @@ namespace VictuzMobileApp.MVVM.ViewModel
 
                     ProfileImage = localPath;
                     App.CurrentUser.ProfilePicturePath = localPath;
+
                     await App.Database.UpdateAsync(App.CurrentUser);
+
+                    // 🔹 Zorg ervoor dat de UI wordt bijgewerkt
                     OnPropertyChanged(nameof(ProfileImage));
+                    OnPropertyChanged(nameof(App.CurrentUser));
                 }
             }
             catch (Exception ex)
@@ -181,6 +199,8 @@ namespace VictuzMobileApp.MVVM.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Fout", $"Er ging iets mis: {ex.Message}", "OK");
             }
         }
+
+
 
         private async Task TakeNewPhoto()
         {
@@ -196,9 +216,12 @@ namespace VictuzMobileApp.MVVM.ViewModel
 
                     ProfileImage = localPath;
                     App.CurrentUser.ProfilePicturePath = localPath;
-                    await App.Database.UpdateAsync(App.CurrentUser);
-                    OnPropertyChanged(nameof(ProfileImage));
 
+                    await App.Database.UpdateAsync(App.CurrentUser);
+
+                    // Forceer UI-update
+                    OnPropertyChanged(nameof(ProfileImage));
+                    OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
                 }
             }
             catch (Exception ex)
@@ -206,5 +229,6 @@ namespace VictuzMobileApp.MVVM.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Fout", $"Er ging iets mis: {ex.Message}", "OK");
             }
         }
+
     }
 }
