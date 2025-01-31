@@ -50,11 +50,10 @@ namespace VictuzMobileApp.MVVM.View
         {
             base.OnAppearing();
             await LoadUpcomingEvents();
-            if (App.CurrentUser != null && string.IsNullOrEmpty(App.CurrentUser.ProfilePicturePath))
+            if (App.CurrentUser != null)
             {
-                App.CurrentUser.ProfilePicturePath = "person.png";
+                OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
             }
-
 
             await LoadWeatherData();
         }
