@@ -37,7 +37,13 @@
                                 HorizontalOptions="Center"
                                 HeightRequest="60"/>
 
-
+                            <ImageButton
+                                x:Name="DeleteTicket"
+                                Clicked="OnDeleteClicked"
+                                Source="trash.png"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                HeightRequest="60"/>
                             
                         </VerticalStackLayout>
                     </Frame>
