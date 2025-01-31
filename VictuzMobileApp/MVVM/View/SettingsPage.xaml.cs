@@ -1,3 +1,7 @@
+using Plugin.LocalNotification;
+using Plugin.LocalNotification.AndroidOption;
+using Plugin.LocalNotification.EventArgs;
+
 namespace VictuzMobileApp.MVVM.View;
 
 public partial class SettingsPage : ContentPage
@@ -48,6 +52,19 @@ public partial class SettingsPage : ContentPage
         else
         {
             NotificationButton.Source = "settings_on.png";
+
+            var notification = new NotificationRequest
+            {
+                Title = "Victuz",
+                Description = "Instellingen voor melding aangepast.",
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Now.AddSeconds(1),
+                    NotifyRepeatInterval = TimeSpan.FromMinutes(5)
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notification);
         }
         isSettings_on = !isSettings_on;
     }
