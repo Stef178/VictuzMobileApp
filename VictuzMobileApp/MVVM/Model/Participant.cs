@@ -45,7 +45,6 @@ public class Participant : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    // Constructor om ervoor te zorgen dat nieuwe gebruikers standaard "person.png" krijgen
     public Participant()
     {
         if (string.IsNullOrEmpty(ProfilePicturePath))

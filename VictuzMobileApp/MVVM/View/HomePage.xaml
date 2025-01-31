@@ -6,6 +6,11 @@
              x:Class="VictuzMobileApp.MVVM.View.HomePage"
              Title="HomePage"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
