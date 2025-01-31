@@ -31,7 +31,7 @@ namespace VictuzMobileApp.MVVM.View
                         </head>
                         <body>
                             <form>
-                                <div class='g-recaptcha' data-sitekey='6LdATMgqAAAAALhP6zN95dhzzxzm3uUStGdCXgQE' data-callback='onSubmit'></div>
+                                <div class='g-recaptcha' data-sitekey='6LfL1ccqAAAAAJzeedg9bcA5IfTV6g1J2-QImiJR' data-callback='onSubmit'></div>
                             </form>
                             <script>
                                 function onSubmit(token) {
