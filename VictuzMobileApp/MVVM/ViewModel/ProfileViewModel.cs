@@ -117,7 +117,8 @@ namespace VictuzMobileApp.MVVM.ViewModel
                 if (currentUser != null)
                 {
                     currentUser.Name = $"{FirstName} {LastName}";
-                    currentUser.ProfilePicturePath = ProfileImage; // Gebruik het juiste pad
+                    currentUser.ProfilePicturePath = ProfileImage;
+                    OnPropertyChanged(nameof(ProfileImage));
                     currentUser.BirthDate = BirthDate;
                     currentUser.City = City;
                     currentUser.Country = Country;
@@ -169,7 +170,10 @@ namespace VictuzMobileApp.MVVM.ViewModel
                     using var fileStream = File.Create(localPath);
                     await stream.CopyToAsync(fileStream);
 
-                    ProfileImage = localPath; // Update de binding
+                    ProfileImage = localPath;
+                    App.CurrentUser.ProfilePicturePath = localPath;
+                    await App.Database.UpdateAsync(App.CurrentUser);
+                    OnPropertyChanged(nameof(ProfileImage));
                 }
             }
             catch (Exception ex)
@@ -190,7 +194,11 @@ namespace VictuzMobileApp.MVVM.ViewModel
                     using var fileStream = File.Create(localPath);
                     await stream.CopyToAsync(fileStream);
 
-                    ProfileImage = localPath; // Update de binding
+                    ProfileImage = localPath;
+                    App.CurrentUser.ProfilePicturePath = localPath;
+                    await App.Database.UpdateAsync(App.CurrentUser);
+                    OnPropertyChanged(nameof(ProfileImage));
+
                 }
             }
             catch (Exception ex)
