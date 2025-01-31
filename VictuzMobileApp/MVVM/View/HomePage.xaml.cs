@@ -49,14 +49,18 @@ namespace VictuzMobileApp.MVVM.View
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await LoadUpcomingEvents();
-            if (App.CurrentUser != null)
+
+            if (App.CurrentUser != null && string.IsNullOrEmpty(App.CurrentUser.ProfilePicturePath))
             {
-                OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
+                App.CurrentUser.ProfilePicturePath = "person.png";
+                await App.Database.UpdateAsync(App.CurrentUser);
             }
 
+            OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
+            await LoadUpcomingEvents();
             await LoadWeatherData();
         }
+
 
         private async void OnLogoutButtonClicked(object sender, EventArgs e)
         {

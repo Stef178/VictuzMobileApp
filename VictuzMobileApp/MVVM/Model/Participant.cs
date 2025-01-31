@@ -16,16 +16,21 @@ public class Participant : INotifyPropertyChanged
     [NotNull]
     public string Password { get; set; }
 
-    private string _profilePicturePath;
+    private string _profilePicturePath = "person.png"; // Standaardwaarde instellen
+
     public string ProfilePicturePath
     {
         get => _profilePicturePath;
         set
         {
-            _profilePicturePath = value;
-            OnPropertyChanged();
+            if (_profilePicturePath != value)
+            {
+                _profilePicturePath = string.IsNullOrEmpty(value) ? "person.png" : value;
+                OnPropertyChanged();
+            }
         }
     }
+
 
     public string BirthDate { get; set; }
     public string City { get; set; }
@@ -38,5 +43,14 @@ public class Participant : INotifyPropertyChanged
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    // Constructor om ervoor te zorgen dat nieuwe gebruikers standaard "person.png" krijgen
+    public Participant()
+    {
+        if (string.IsNullOrEmpty(ProfilePicturePath))
+        {
+            ProfilePicturePath = "person.png";
+        }
     }
 }
