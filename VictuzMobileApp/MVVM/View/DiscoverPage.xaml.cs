@@ -38,7 +38,7 @@ namespace VictuzMobileApp.MVVM.View
 			}
 			else
 			{
-				FilteredEvents = AllEvents.Where(a => a.Name.ToLower().Trim() == searchText.ToLower().Trim()).ToList();
+				FilteredEvents = AllEvents.Where(a => a.Name.ToLower().Contains(searchText.ToLower().Trim())).ToList();
 			}
 
 			SortEvents();
