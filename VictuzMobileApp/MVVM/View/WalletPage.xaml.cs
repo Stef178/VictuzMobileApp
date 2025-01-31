@@ -1,11 +1,20 @@
 using System.Collections.ObjectModel;
 using VictuzMobileApp.MVVM.Model;
+using System;
+using System.Net.Http;
+using Microsoft.Maui.Controls;
+
+
 
 namespace VictuzMobileApp.MVVM.View;
 
 public partial class WalletPage : ContentPage
+
 {
     public ObservableCollection<Ticket> ReservedTickets { get; set; } = new ObservableCollection<Ticket>();
+
+    private readonly HttpClient _httpClient = new();
+
 
     public WalletPage()
     {
@@ -27,6 +36,11 @@ public partial class WalletPage : ContentPage
             ticket.Activity = await App.Database.GetAsync<Activity>(ticket.ActivityId);
             ReservedTickets.Add(ticket);
         }
+    }
+
+    private async void OnQrClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ShowQr());
     }
 
 

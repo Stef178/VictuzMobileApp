@@ -29,6 +29,16 @@
                            FontSize="Small" />
                             <Label Text="{Binding IsPaid, Converter={StaticResource BoolToTextConverter}}"
                            FontSize="Small" />
+                            <ImageButton
+                                x:Name="ShowQr"
+                                Clicked="OnQrClicked"
+                                Source="qr.png"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                HeightRequest="60"/>
+
+
+                            
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
