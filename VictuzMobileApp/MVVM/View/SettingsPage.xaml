@@ -19,10 +19,35 @@
 
 
             <!-- Knop om no blue light filter te toggelen -->
-            <Button Text="Toggle Blue Light Filter" 
-                    Clicked="OnNoBlueLightButtonClicked"
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Center" />
+
+            <Label
+                Margin="0,20,0,0"
+                Text="Blauwlicht filter"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+            <ImageButton
+                x:Name="BluelightButton"
+                Source="settings_off.png"
+                Clicked="OnNoBlueLightButtonClicked"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                HeightRequest="60"/>
+
+            <Label
+                Margin="0,20,0,0"
+                Text="Meldingen"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+            <ImageButton
+                x:Name="NotificationButton"
+                Source="settings_off.png"
+                Clicked="OnNotificationClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="60"/>
+            
         </StackLayout>
 
         <!-- IconBar -->

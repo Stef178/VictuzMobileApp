@@ -2,6 +2,8 @@ namespace VictuzMobileApp.MVVM.View;
 
 public partial class SettingsPage : ContentPage
 {
+    private bool isSettings_on = false;
+
     public SettingsPage()
     {
         InitializeComponent();
@@ -25,5 +27,28 @@ public partial class SettingsPage : ContentPage
         {
             Application.Current.Resources["AppBackgroundColor"] = Colors.White; // Normale achtergrondkleur
         }
+
+        if (isSettings_on)
+        {
+            BluelightButton.Source = "settings_off.png";
+        }
+        else
+        {
+            BluelightButton.Source = "settings_on.png";
+        }
+        isSettings_on = !isSettings_on;
+    }
+
+    private async void OnNotificationClicked(object sender, EventArgs e)
+    {
+        if (isSettings_on)
+        {
+            NotificationButton.Source = "settings_off.png";
+        }
+        else
+        {
+            NotificationButton.Source = "settings_on.png";
+        }
+        isSettings_on = !isSettings_on;
     }
 }
