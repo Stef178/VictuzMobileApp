@@ -1,4 +1,4 @@
-﻿using SQLiteBrowser;
+using SQLiteBrowser;
 using VictuzMobileApp.MVVM.Model;
 using System.Collections.ObjectModel;
 
@@ -49,22 +49,14 @@ namespace VictuzMobileApp.MVVM.View
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
+            await LoadUpcomingEvents();
             if (App.CurrentUser != null)
             {
-                if (string.IsNullOrEmpty(App.CurrentUser.ProfilePicturePath) || !File.Exists(App.CurrentUser.ProfilePicturePath))
-                {
-                    App.CurrentUser.ProfilePicturePath = "person.png";
-                }
-
-                OnPropertyChanged(nameof(App.CurrentUser));
+                OnPropertyChanged(nameof(App.CurrentUser.ProfilePicturePath));
             }
 
-            await LoadUpcomingEvents();
             await LoadWeatherData();
         }
-
-
 
         private async void OnLogoutButtonClicked(object sender, EventArgs e)
         {

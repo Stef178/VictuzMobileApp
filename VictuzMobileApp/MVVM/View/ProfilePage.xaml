@@ -20,7 +20,7 @@
                     </Image>
                 </Grid>
 
-                <Entry Text="{Binding UserName}" Placeholder="Gebruikersnaam" />
+                <Label Text="Gebruikersnaam" FontSize="18" HorizontalOptions="Center" />
                 <Entry Text="{Binding FirstName}" Placeholder="Voornaam" />
                 <Entry Text="{Binding LastName}" Placeholder="Achternaam" />
                 <Entry Text="{Binding BirthDate}" Placeholder="Geboortedatum (DD-MM-YYYY)" Keyboard="Text" />
