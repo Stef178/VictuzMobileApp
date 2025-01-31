@@ -16,7 +16,7 @@ public partial class SettingsPage : ContentPage
         // Sla de voorkeur op
         Preferences.Set("NoBlueLight", isBlueLightActivated);
 
-        // Wijzig de achtergrondkleur voor de gehele app
+        // Wijzig de achtergrondkleur voor de hele app
         if (isBlueLightActivated)
         {
             Application.Current.Resources["AppBackgroundColor"] = Color.FromRgb(255, 255, 180); // Geel
