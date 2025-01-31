@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:VictuzMobileApp.Controls"
              x:Class="VictuzMobileApp.MVVM.View.CommunityPage"
-             Title="CommunityPage"
-             BackgroundColor="{DynamicResource AppBackgroundColor}">
+             Title="CommunityPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -12,11 +11,32 @@
         </Grid.RowDefinitions>
 
         <!-- Hoofdinhoud -->
-        <StackLayout Grid.Row="0">
-            <Label Text="Welcome to the CommunityPage" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Grid.Row="0">
+                <Label Text="" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+
+                <Button Text="Foto posten" Clicked="OnAddPhotoClicked"/>
+
+                <CollectionView x:Name="PhotoCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10">
+                                <VerticalStackLayout>
+                                    <Image Source="{Binding ImagePath}" HeightRequest="250" Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnPhotoTapped" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="{Binding Caption}" FontSize="14"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
 
         <!-- IconBar -->
         <controls:IconBar Grid.Row="1" />
